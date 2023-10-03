@@ -2,14 +2,15 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: Software/Mechanical Engineer with Concentration in Robotics, Automation, and AI
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>420 Westwood Plaza, Rm 32-117E</p>
+    <p>Rm 32-117E</p>
+    <p>420 Westwood Plaza</p>
     <p>Los Angeles, CA 90095</p>
 
 news: true  # includes a list of news items
