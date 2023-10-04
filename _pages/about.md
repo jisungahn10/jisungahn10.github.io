@@ -21,6 +21,8 @@ social: true  # includes social icons at the bottom of the page
 
 Hello there, I am Ji Sung Ahn and I am currently a Masters student at the Robotics and Mechanisms Laboratory ([RoMeLa](https://www.romela.org)) at the University of California, Los Angeles (UCLA) advised by Dr. Dennis Hong.
 
+I am interested in developing cooperative robotic teams in the future that take advantage of different types of robots.
+
 Feel free to reach out to me through any of my social media!
 
 [//]: Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
