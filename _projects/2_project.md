@@ -44,10 +44,10 @@ I implemented two PID controllers by actuating the wheel motors, holding all the
         {% include figure.html path="assets/limms/gifs/limms_position_tracking_sim.gif" title="position tracking gif" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="limms/gifs/limms_driving_forwards_sim.gif" title="driving forwards gif" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/limms/gifs/limms_driving_forwards_sim.gif" title="driving forwards gif" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="limms/gifs/limms_turning_sim.gif" title="turning gif" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/limms/gifs/limms_turning_sim.gif" title="turning gif" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
