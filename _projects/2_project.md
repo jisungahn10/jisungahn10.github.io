@@ -30,7 +30,7 @@ I imported the URDF of the LIMMS module into PyBullet to verify the inverted pen
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/limms/gif/limms_mip_sim.gif" title="segway simulation gif" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/limms/gifs/limms_mip_sim.gif" title="segway simulation gif" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
