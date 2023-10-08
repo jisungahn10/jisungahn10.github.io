@@ -83,26 +83,32 @@ To address the issue of latency and connection instability, the IMU was switched
 # Stable Orientation using Optimization for Tri-wheeled Mode
 While the inverted pendulum method of mobility may be interesting, it is not necessarily feasible. The stability of the module may be influenced in the roll direction if the surface is not flat, which is not guaranteed in human environments. From an energy efficiency perspective, the module is required to continuously be operational and consume energy to stay balancing. At RoMeLa, we came up with a new mode called Tri-wheeled mode where two LIMMS modules are connected to each other and form a tricycle configuration. However, as seen in the video, the Tri-wheeled mode occupies far more space compared to the inverted pendulum mode. 
 
-<iframe src="https://drive.google.com/file/d/1fA2WtSVcnpO85GA4_lbUmaWLuERl0E74/preview" width="640" height="480" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/1Wt6Fxywwo53e-WAJfcoaqbFrwoyWlKTA/preview" width="640" height="480" allow="autoplay"></iframe>
 
 I used SciPy's optimization library to find the optimal configuration of the Tri-wheeled mode. I constrained the lateral and longitudinal widths of the mode and maximized the area of the support polygon. Below are videos and figures that show different constraints.
 
 <div class="row">
-    <iframe src="https://drive.google.com/file/d/1aAeb_eVVQErjWPOLkcW6FyKf0ocEAr8m/preview" width="640" height="480" allow="autoplay"></iframe>
+    <div class="col-sm mt-3 mt-md-0">
+        <iframe src="https://drive.google.com/file/d/1aAeb_eVVQErjWPOLkcW6FyKf0ocEAr8m/preview" width="640" height="480" allow="autoplay"></iframe>
+    </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/limms/img/widthC_depthU.png" title="limms triw flat" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="row">
-    <iframe src="https://drive.google.com/file/d/1Wt6Fxywwo53e-WAJfcoaqbFrwoyWlKTA/preview" width="640" height="480" allow="autoplay"></iframe>
+    <div class="col-sm mt-3 mt-md-0">
+        <iframe src="https://drive.google.com/file/d/1fA2WtSVcnpO85GA4_lbUmaWLuERl0E74/preview" width="640" height="480" allow="autoplay"></iframe>
+    </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/limms/img/widthvaryingC_depthconstantC.png" title="limms triw easier" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="row">
-    <iframe src="https://drive.google.com/file/d/1dJpD5Yc7Njt8vV3OwXwnai88lH9fxilb/preview" width="640" height="480" allow="autoplay"></iframe>
+    <div class="col-sm mt-3 mt-md-0">
+        <iframe src="https://drive.google.com/file/d/1dJpD5Yc7Njt8vV3OwXwnai88lH9fxilb/preview" width="640" height="480" allow="autoplay"></iframe>
+    </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/limms/img/narrower_widthvaryingC_depthconstantC.png" title="limms triw harder" class="img-fluid rounded z-depth-1" %}
     </div>
