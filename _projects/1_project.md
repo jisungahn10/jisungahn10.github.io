@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Behavior Module Development using Finite State Machine and Reinforcement Learning
-description: a project with a background image
+title: ARTEMIS
+description: Advanced Robotic Technology for Enhanced Mobility and Improved Stability
 img: assets/limms/img/limms_background.png
 importance: 1
 category: work
@@ -32,6 +32,8 @@ I chose the subsumption architecture over other common control architectures suc
     simulation caption
 </div>
 
+The lowest layer is simply walking. The tactical planner uses information from the camera and the IMU to decide where to reposition, subsuming the walking layer. If kicking the ball would result in a more advantageous game state, kicking is activated, inhibiting all the layers below. Finally, if the ball is not found, the player will look for the ball, while repositioning to a more defensive location. The ball is always progressed towards the opposition's goal when the kicking condition and the tactical planner are combined. The purpose of buildup is to move the ball towards the opposition's side, while the purpose of offensive play is to move the ball into the opposition's goal.
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/robocup23/img/robocup_subsumption_architecture.png" title="robocup subsumption architecture" class="img-fluid rounded z-depth-1" %}
@@ -41,4 +43,14 @@ I chose the subsumption architecture over other common control architectures suc
     simulation caption
 </div>
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/robocup23/img/desired_ball_progression.png" title="ball progression img" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    simulation caption
+</div>
+
 # Reinforcement Learning
+Link to reinforcement learning project
