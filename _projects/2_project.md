@@ -73,6 +73,17 @@ I also implemented the controller on hardware. I placed the inertial measurement
 
 To address the issue of latency and connection instability, the IMU was switched to an IMU from MicroStrain and the connection was switched from WiFi to serial. After making the modifications, the hardware was able to successfully balance. Additionally, because the hardware was not run on battery, but instead was run through a wire, the dynamics are different from simulation, which means the dynamic equilibrium is different on hardware. Through trial and error, I found that the difference in the equilibrium angle was about 9 degrees. Below are videos of the balancing system.
 
+<iframe src="https://drive.google.com/file/d/1SvMeZ8K4MBNF0pZ8YqCoMMwzsbhvQkkX/preview" width="640" height="480" allow="autoplay"></iframe>
+
+<iframe src="https://drive.google.com/file/d/1M7NRzYDS4kqp-1rv-AXdMkJleVUMpdr8/preview" width="640" height="480" allow="autoplay"></iframe>
+
+<iframe src="https://drive.google.com/file/d/13a1fIrWekL8VJFyWG-283-rx1ZzFTUtJ/preview" width="640" height="480" allow="autoplay"></iframe>
+
+# Stable Orientation using Optimization for Tri-wheeled Mode
+While the inverted pendulum method of mobility may be interesting, it is not necessarily feasible. The stability of the module may be influenced in the roll direction if the surface is not flat, which is not guaranteed in human environments. From an energy efficiency perspective, the module is required to continuously be operational and consume energy to stay balancing. At RoMeLa, we came up with a new mode called Tri-wheeled mode where two LIMMS modules are connected to each other and form a tricycle configuration.
+
+Add figure of triwheeled mode
+
 
 
 
