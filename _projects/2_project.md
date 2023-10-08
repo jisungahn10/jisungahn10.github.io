@@ -3,7 +3,7 @@ layout: page
 title: Latching Intelligent Modular Mobility System (LIMMS)
 description: a project with a background image
 img: assets/limms/img/limms_background.png
-importance: 1
+importance: 2
 category: work
 related_publications: einstein1956investigations, einstein1950meaning
 ---
@@ -71,7 +71,9 @@ I also implemented the controller on hardware. I placed the inertial measurement
     simulation caption
 </div>
 
-To address the issue of latency and connection instability, the IMU was switched to an IMU from MicroStrain and the connection was switched from WiFi to serial. After making the modifications, the hardware was able to successfully balance. Additionally, because the hardware was not run on battery, but instead was run through a wire, the dynamics are different from simulation, which means the dynamic equilibrium is different on hardware. Through trial and error, I found that the difference in the equilibrium angle was about 9 degrees.
+To address the issue of latency and connection instability, the IMU was switched to an IMU from MicroStrain and the connection was switched from WiFi to serial. After making the modifications, the hardware was able to successfully balance. Additionally, because the hardware was not run on battery, but instead was run through a wire, the dynamics are different from simulation, which means the dynamic equilibrium is different on hardware. Through trial and error, I found that the difference in the equilibrium angle was about 9 degrees. Below are videos of the balancing system.
+
+
 
 
 
