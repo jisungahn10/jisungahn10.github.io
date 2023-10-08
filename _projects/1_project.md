@@ -2,7 +2,7 @@
 layout: page
 title: ARTEMIS
 description: Advanced Robotic Technology for Enhanced Mobility and Improved Stability
-img: assets/limms/img/limms_background.png
+img: assets/robocup23/img/artemis.jpg
 importance: 1
 category: work
 related_publications: einstein1956investigations, einstein1950meaning
