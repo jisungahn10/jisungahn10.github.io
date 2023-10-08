@@ -27,6 +27,12 @@ I chose the subsumption architecture over other common control architectures suc
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/robocup23/img/subsumption_architecture.png" title="subsumption architecture" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
+<div class="caption">
+    simulation caption
+</div>
+
+<div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/robocup23/img/robocup_subsumption_architecture.png" title="robocup subsumption architecture" class="img-fluid rounded z-depth-1" %}
     </div>
