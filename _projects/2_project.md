@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Latching Intelligent Modular Mobility System (LIMMS)
-description: a project with a background image
+title: LIMMS
+description: Latching Intelligent Modular Mobility System
 img: assets/limms/img/limms_background.png
 importance: 2
 category: work
