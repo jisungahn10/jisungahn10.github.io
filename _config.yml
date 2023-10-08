@@ -6,7 +6,7 @@ title: Ji Sung Ahn # the website title (if blank, full name will be used instead
 first_name: Ji Sung
 middle_name: 
 last_name: Ahn
-email: you@example.com
+email: jisungahn32@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Ji Sung Ahn's homepage.
 footer_text: >
@@ -126,7 +126,7 @@ permalink: /blog/:year/:title/
 
 # Pagination
 pagination:
-  enabled: true
+  enabled: false
 
 related_blog_posts:
   enabled: true
