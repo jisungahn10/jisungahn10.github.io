@@ -2,7 +2,7 @@
 layout: page
 title: Reinforcement Learning
 description: Reinforcement learning approach to strategic game behavior
-img: assets/img/3.jpg
+img: assets/rl/img/robocup_simulation_environment.png
 importance: 3
 category: work
 related_publications: haarnoja2023learning, Authors14, Authors15, zhu2021deep, ibarz2021train, pathak2017curiosity, kaelbling1996reinforcement, florensa2018automatic, riedmiller2018learning, ahn2023development, carreras2003proposal
@@ -26,23 +26,14 @@ A baseline scenario (Figure 1) was defined and developed in a simulation environ
 </div>
 
 ## Q-Learning
-A basic Q-learning algorithm was first used to train a robot in a grid-based world to kick a ball into the goal (Figure 2). The initial attempts at using Q-learning showed promise, but the algorithm quickly ran into the curse of dimensionality. The algorithm managed to reach ending conditions when the observation space was four dimensional (positions of the robot and the ball), but immediately struggled when the grid was expanded from a 9 by 14 table to 18 by 28 table. In other words, the basic Q-learning algorithm using a grid-based world is not scalable. Furthermore, in order to produce quality decisions, it is necessary for the model to train on an environment that accurately represents the real world, so compromising for a simpler environment with fewer discrete spaces is not an option.
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/rl/img/robocup_simulation_environment.png" title="rl simulation environment" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Figure 2: Simulation Environment
-</div>
+A basic Q-learning algorithm was first used to train a robot in a grid-based world to kick a ball into the goal. The initial attempts at using Q-learning showed promise, but the algorithm quickly ran into the curse of dimensionality. The algorithm managed to reach ending conditions when the observation space was four dimensional (positions of the robot and the ball), but immediately struggled when the grid was expanded from a 9 by 14 table to 18 by 28 table. In other words, the basic Q-learning algorithm using a grid-based world is not scalable. Furthermore, in order to produce quality decisions, it is necessary for the model to train on an environment that accurately represents the real world, so compromising for a simpler environment with fewer discrete spaces is not an option.
 
 ## Deep Q Network
 To deal with the challenges of dimensionality, Deep Q Network (DQN) was also explored. DQN is a model-free network that does not require its environment's transition functions to make predictions of future states or rewards. Since the planner is correlated to building a planner for the actual soccer game, the RL model-free approach is expected to give a good robust solution. DQN is built on Fitted Q-Iteration, which uses different tricks to stabilize the learning with neural networks. I used stable-baseline3 library, which comes with a set of reliable implementations of Reinforced Learning algorithms. The DQN algorithm in this library has provided us with Vanilla Deep Q learning implementation.
 
 The observation space is continuous, but the action space is discrete. A large amount of time was spent building a custom environment with strategically placed rewards to encourage certain behaviors such as getting closer to the ball and kicking the ball towards the opposition's goal. Negative reward is accrued each time step to avoid making unnecessary repetitive actions. Due to time constraints, the task has been simplified to kicking the ball towards the opposition's goal without any opponents. The opponents were removed from the observation space because designing collisions into the model was causing the agent to freeze in one position.
 
-The final exploration rate influenced how robust and accurate the model was to different types of situations. A low final exploration rate produces a highly constrained action, but is prone to getting stuck in local optimas. A high final exploration rate would require exponentially more epochs, but would be more robust against local optimas. Different models with a final exploration rates of 0.05, 0.3, and 0.5 were trained and the exploration rate (Figure 3) with the highest reward was chosen.
+The final exploration rate influenced how robust and accurate the model was to different types of situations. A low final exploration rate produces a highly constrained action, but is prone to getting stuck in local optimas. A high final exploration rate would require exponentially more epochs, but would be more robust against local optimas. Different models with a final exploration rates of 0.05, 0.3, and 0.5 were trained and the exploration rate (Figure 2) with the highest reward was chosen.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -50,10 +41,10 @@ The final exploration rate influenced how robust and accurate the model was to d
     </div>
 </div>
 <div class="caption">
-    Figure 3: Deep Q-Network Exploration Rate
+    Figure 2: Deep Q-Network Exploration Rate
 </div>
 
-With a set exploration rate, models with different architectures were also trained (Figure 4). Modifications to the architecture were made because the scenario involves not only finding a path to the ball, but also interacting with it. Thus, more layers were added to represent the additional complexity. More neurons were added to the layers to better represent the states, but no significant performance boost was observed. The architecture that achieved the highest reward was chosen for the algorithm comparison.
+With a set exploration rate, models with different architectures were also trained (Figure 3). Modifications to the architecture were made because the scenario involves not only finding a path to the ball, but also interacting with it. Thus, more layers were added to represent the additional complexity. More neurons were added to the layers to better represent the states, but no significant performance boost was observed. The architecture that achieved the highest reward was chosen for the algorithm comparison.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -61,7 +52,7 @@ With a set exploration rate, models with different architectures were also train
     </div>
 </div>
 <div class="caption">
-    Figure 4: Deep Q-Network Model Architecture Comparison
+    Figure 3: Deep Q-Network Model Architecture Comparison
 </div>
 
 The scenario was attempted multiple times by the Q-learning algorithm, DQN, and behavior-based algorithm developed from the game behavior module. The average time and standard deviation of completion time is summarized in the table below.
