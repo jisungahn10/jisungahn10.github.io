@@ -45,7 +45,7 @@ I imported the URDF of the LIMMS module into PyBullet to verify the inverted pen
     Figure 3: LIMMS Simulation
 </div>
 
-I implemented two PID controllers by actuating the wheel motors, holding all the other joint motors in place, and using the pitch of the center piece at the top of LIMMS as feedback to regulate the orientation of LIMMS. Through trial and error, I found the balancing pitch where LIMMS would mostly track a single position. One PID loop was used to regulate the orientation of LIMMS, while the other was used to track a certain desired position in the environment. Examples of LIMMS tracking a position, driving forwards, and turning are shown in Figure 4.
+I implemented two PID controllers by actuating the wheel motors, holding all the other joint motors in place, and using the pitch of the center piece at the top of LIMMS as feedback to regulate the orientation of LIMMS. Through trial and error, I found the balancing pitch where LIMMS would mostly track a single position. One PID loop was used to regulate the orientation of LIMMS, while the other was used to track a certain desired position in the environment. Examples of LIMMS tracking a position, driving forwards, and turning are shown below.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -58,8 +58,16 @@ I implemented two PID controllers by actuating the wheel motors, holding all the
         {% include figure.html path="assets/limms/gifs/limms_turning_sim.gif" title="turning gif" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-<div class="caption">
-    Figure 4: (Left to Right) Position Tracking, Driving Forwards, and Turning 
+<div class="row">
+    <div class="caption">
+        Position Tracking
+    </div>
+    <div class="caption">
+        Driving Forwards
+    </div>
+    <div class="caption">
+        Turning 
+    </div>
 </div>
 
 I also implemented the controller on hardware. I placed the inertial measurement unit (IMU) on the center of LIMMS and communicated with the IMU through WiFi. Unfortunately, the communication with the IMU was unstable and had high latency (Figure 5). The instability of the connection can be observed by the late actuation of the motors during changes in the pitch of LIMMS. The lack of latency can be observed in simulation by how the wheels can never reach the location below the center of mass of LIMMS in time, even with a high I gain in the balancing PID controller. I verified the effect of latency on balancing by running the simulation in both 90 Hz and 240 Hz (Figures 6 and 7). The simulation and hardware implemenations with low latency show similar behavior of how the wheels are increasingly late.
