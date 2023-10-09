@@ -5,28 +5,37 @@ description: Latching Intelligent Modular Mobility System
 img: assets/limms/img/limms_background.png
 importance: 2
 category: work
-related_publications: einstein1956investigations, einstein1950meaning
+related_publications: zhu2022feasibility, fernandez2022self, fernandez2024self
 ---
 
 # Overview
 Latching Intelligent Modular Mobile System (LIMMS) is a 6 degree of freedom symmetric serial robot where each end can detach and reattach to function as the base or the end-effector. LIMMS was designed as a robotic solution to package transportation by minimizing spatial footprint while maintaining task scalability. Check out the paper by the Robotics and Mechanisms Laboratory (RoMeLa) for more information and details on the feasibility of LIMMS and its potential as a transportation solution.
 
 # Inverted Pendulum Mode
-In order for LIMMS to operate as the package’s mobility system, LIMMS needs to be able to move individually to proper locations in the right orientation around the package. To achieve individual mobility for LIMMS, I modeled LIMMS as an inverted pendulum, which is already well established in literature and learning curriculums and even in commercial products such as Segways.
+In order for LIMMS to operate as the package’s mobility system, LIMMS needs to be able to move individually to proper locations in the right orientation around the package. To achieve individual mobility for LIMMS, I modeled LIMMS as an inverted pendulum (Figure 1), which is already well established in literature and learning curriculums and even in commercial products such as Segways.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/limms/img/segway.jpg" title="segway image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/limms/img/inverted_pendulum.png" title="inverted pendulum image" class="img-fluid rounded z-depth-1" %}
     </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/limms/img/segway.jpg" title="segway image" class="img-fluid rounded z-depth-1" %}
+    </div>
 </div>
-<div class="caption">
-    Segway and Inverted Pendulum
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <div class="caption">
+            Figure 1: Inverted Pendulum and Segway
+        </div>
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        <div class="caption">
+            Figure 1: Inverted Pendulum and Segway
+        </div>
+    </div>
 </div>
 
-I imported the URDF of the LIMMS module into PyBullet to verify the inverted pendulum model as a mobility mode. 
+I imported the URDF of the LIMMS module into PyBullet to verify the inverted pendulum model as a mobility mode as seen in Figure 2. 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -34,7 +43,7 @@ I imported the URDF of the LIMMS module into PyBullet to verify the inverted pen
     </div>
 </div>
 <div class="caption">
-    simulation caption
+    Figure 2: LIMMS Simulation
 </div>
 
 I implemented two PID controllers by actuating the wheel motors, holding all the other joint motors in place, and using the pitch of the center piece at the top of LIMMS as feedback to regulate the orientation of LIMMS. Through trial and error, I found the balancing pitch where LIMMS would mostly track a single position. One PID loop was used to regulate the orientation of LIMMS, while the other was used to track a certain desired position in the environment. Examples of LIMMS tracking a position, driving forwards, and turning are shown below.
