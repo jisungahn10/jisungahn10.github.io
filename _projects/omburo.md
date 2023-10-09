@@ -72,7 +72,7 @@ Gyroscopic precession is the relationship between the angular momentum of an obj
 <div class="row">
     <div class="col">
     </div>
-    <div class="col-8">
+    <div class="col-6">
         {% include figure.html path="assets/omburo/img/control_loop.png" title="control loop" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col">
@@ -131,7 +131,7 @@ A simulation of OmBURo was built to repeatedly test and assess the feasibility o
 <div class="row">
     <div class="col">
     </div>
-    <div class="col-8">
+    <div class="col-6">
         {% include figure.html path="assets/omburo/gif/omburo_sim_gif.gif" title="omburo sample sim" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col">

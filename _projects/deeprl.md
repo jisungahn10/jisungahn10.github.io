@@ -19,7 +19,7 @@ A baseline scenario (Figure 1) was defined and developed in a simulation environ
 <div class="row">
     <div class="col">
     </div>
-    <div class="col-8">
+    <div class="col-6">
         {% include figure.html path="assets/rl/gif/rl_sample_game.gif" title="sample game" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col">
