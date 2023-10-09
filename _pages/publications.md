@@ -10,6 +10,6 @@ nav_order: 1
 <div class="publications">
 
 {% bibliography -f papers1 -q @*[key=ahn2021dynamic]* %}
-<!-- {% bibliography -f {{ site.scholar.bibliography }} %} -->
+
 
 </div>
