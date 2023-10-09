@@ -72,14 +72,20 @@ I implemented two PID controllers by actuating the wheel motors, holding all the
     </div>
 </div>
 <div class="row">
-    <div class="caption">
-        Position Tracking
+    <div class="col-sm mt-3 mt-md-0">
+        <div class="caption">
+            Position Tracking
+        </div>
     </div>
-    <div class="caption">
-        Driving Forwards
+    <div class="col-sm mt-3 mt-md-0">
+        <div class="caption">
+            Driving Forwards
+        </div>
     </div>
-    <div class="caption">
-        Turning 
+    <div class="col-sm mt-3 mt-md-0">
+        <div class="caption">
+            Turning 
+        </div>
     </div>
 </div>
 
