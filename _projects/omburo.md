@@ -56,10 +56,10 @@ Gyroscopic precession is the relationship between the angular momentum of an obj
  I first analyzed this phenomenon on a simple coin (Figure 1) rolling down a surface and extended my analysis to OmBURo (Figure 2). Check out my publication for more indepth derivations on the dynamics.
 
 <div class="row">
-    <div class="col-4">
+    <div class="col-3">
         {% include figure.html path="assets/omburo/img/omburo_simulation_model.png" title="omburo simulation model" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-8">
+    <div class="col-9">
         {% include figure.html path="assets/omburo/img/omburo_model.png" title="omburo model" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -72,7 +72,7 @@ Gyroscopic precession is the relationship between the angular momentum of an obj
 <div class="row">
     <div class="col">
     </div>
-    <div class="col-6">
+    <div class="col-8">
         {% include figure.html path="assets/omburo/img/control_loop.png" title="control loop" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col">
