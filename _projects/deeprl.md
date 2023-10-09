@@ -17,12 +17,12 @@ While it was simple and straightforward to develop basic behaviors and organize 
 A baseline scenario (Figure 1) was defined and developed in a simulation environment to compare reinforcement learning and finite state machine approaches. The environment was built based on the real field dimensions. The scenario starts with the player starting in a random position on the left side of the field and the ball placed in the center of the field. The scenario ends when the ball is kicked into the opposition's goal. The time taken to complete the scenario is averaged over multiple trials to measure the performance of each approach. The standard deviation of the time taken over the multiple trials is used to measure the consistency and reliability of each approach. Below is an example of the scenario.
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col">
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-8">
         {% include figure.html path="assets/rl/gif/rl_sample_game.gif" title="sample game" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col">
     </div>
 </div>
 <div class="caption">
