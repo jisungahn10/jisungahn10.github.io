@@ -40,8 +40,12 @@ The observation space is continuous, but the action space is discrete. A large a
 The final exploration rate influenced how robust and accurate the model was to different types of situations. A low final exploration rate produces a highly constrained action, but is prone to getting stuck in local optimas. A high final exploration rate would require exponentially more epochs, but would be more robust against local optimas. Different models with a final exploration rates of 0.05, 0.3, and 0.5 were trained and the exploration rate (Figure 2) with the highest reward was chosen.
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
         {% include figure.html path="assets/rl/img/DifferentExpDQN.jpg" title="exploration rates" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-2">
     </div>
 </div>
 <div class="caption">
@@ -51,8 +55,12 @@ The final exploration rate influenced how robust and accurate the model was to d
 With a set exploration rate, models with different architectures were also trained (Figure 3). Modifications to the architecture were made because the scenario involves not only finding a path to the ball, but also interacting with it. Thus, more layers were added to represent the additional complexity. More neurons were added to the layers to better represent the states, but no significant performance boost was observed. The architecture that achieved the highest reward was chosen for the algorithm comparison.
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
         {% include figure.html path="assets/rl/img/DQN_all.jpg" title="dqn architectures" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-2">
     </div>
 </div>
 <div class="caption">
@@ -62,8 +70,12 @@ With a set exploration rate, models with different architectures were also train
 The scenario was attempted multiple times by the Q-learning algorithm, DQN, and behavior-based algorithm developed from the game behavior module. The average time and standard deviation of completion time is summarized in the table below.
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
         {% include figure.html path="assets/rl/img/comparison_of_algorithms.png" title="comparison of algorithms" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-2">
     </div>
 </div>
 
