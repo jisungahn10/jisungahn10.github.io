@@ -6,7 +6,6 @@ img: assets/img/3.jpg
 importance: 3
 category: work
 related_publications: einstein1956investigations, einstein1950meaning
-giscus_comments: true
 ---
 
 # Context

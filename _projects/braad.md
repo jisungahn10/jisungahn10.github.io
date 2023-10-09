@@ -1,12 +1,11 @@
 ---
 layout: page
-title: 
-description: a project with a background image and giscus comments
+title: BRAAD
+description: Ball Receiving Autonomously Actuated Device
 img: assets/img/3.jpg
-importance: 2
+importance: 5
 category: work
 related_publications: einstein1956investigations, einstein1950meaning
-giscus_comments: true
 ---
 
 Every project has a beautiful feature showcase page.
