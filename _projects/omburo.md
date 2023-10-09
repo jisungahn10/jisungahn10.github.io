@@ -29,10 +29,10 @@ The Omnidirectional Balancing Unicycle Robot (OmBURo) is a robotic system develo
 Gyroscopic precession is the relationship between the angular momentum of an object and the torque applied to it. I first analyzed this phenomenon on a simple coin (Figure 1) rolling down a surface and extended my analysis to OmBURo (Figure 2). Check out my publication for more indepth derivations on the dynamics.
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-4">
         {% include figure.html path="assets/omburo/img/omburo_simulation_model.png" title="omburo simulation model" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-8">
         {% include figure.html path="assets/omburo/img/omburo_model.png" title="omburo model" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
