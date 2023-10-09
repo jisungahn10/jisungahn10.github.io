@@ -22,28 +22,19 @@ Latching Intelligent Modular Mobile System (LIMMS) is a 6 degree of freedom symm
     <div class="col">
     </div>
   </div>
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/limms/img/inverted_pendulum.png" title="inverted pendulum image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-    </div>
-</div>
 <div class="caption">
     Figure 1: Inverted Pendulum
 </div>
+
 In order for LIMMS to operate as the package’s mobility system, LIMMS needs to be able to move individually to proper locations in the right orientation around the package. To achieve individual mobility for LIMMS, I modeled LIMMS as an inverted pendulum (Figure 1), which is already well established in literature and learning curriculums and even in commercial products such as Segways (Figure 2).
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col">
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-6">
         {% include figure.html path="assets/limms/img/segway.jpg" title="segway image" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col">
     </div>
 </div>
 <div class="row">
@@ -57,12 +48,12 @@ In order for LIMMS to operate as the package’s mobility system, LIMMS needs to
 I imported the URDF of the LIMMS module into PyBullet to verify the inverted pendulum model as a mobility mode as seen in Figure 3. 
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col">
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-6">
         {% include figure.html path="assets/limms/gifs/limms_mip_sim.gif" title="segway simulation gif" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col">
     </div>
 </div>
 <div class="caption">
