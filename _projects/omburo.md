@@ -5,7 +5,7 @@ description: Omnidirectional Balancing Unicycle Robot
 img: assets/omburo/img/omburo_sim.png
 importance: 4
 category: work
-related_publications: 
+related_publications: shen2020omburo, ha1994trajectory, kim2005dynamic, kumagi2008development, hertiga2013unified, gritti2014kinect, pandey2018mass, rizal2015point, rosyidi2016speed, jin2016unicycle, hong2013analysis, jin2018steering, chantarachit2016development, shao2010balancing, de1995modelling, coumans2016pybullet
 ---
 
 # Overview
