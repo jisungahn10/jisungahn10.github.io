@@ -70,7 +70,7 @@ I implemented two PID controllers by actuating the wheel motors, holding all the
     </div>
 </div>
 
-I also implemented the controller on hardware. I placed the inertial measurement unit (IMU) on the center of LIMMS and communicated with the IMU through WiFi. Unfortunately, the communication with the IMU was unstable and had high latency (Figure 5). The instability of the connection can be observed by the late actuation of the motors during changes in the pitch of LIMMS. The lack of latency can be observed in simulation by how the wheels can never reach the location below the center of mass of LIMMS in time, even with a high I gain in the balancing PID controller. I verified the effect of latency on balancing by running the simulation in both 90 Hz and 240 Hz (Figures 6 and 7). The simulation and hardware implemenations with low latency show similar behavior of how the wheels are increasingly late.
+I also implemented the controller on hardware. I placed the inertial measurement unit (IMU) on the center of LIMMS and communicated with the IMU through WiFi. Unfortunately, the communication with the IMU was unstable and had high latency (Figure 4). The instability of the connection can be observed by the late actuation of the motors during changes in the pitch of LIMMS. The lack of latency can be observed in simulation by how the wheels can never reach the location below the center of mass of LIMMS in time, even with a high I gain in the balancing PID controller. I verified the effect of latency on balancing by running the simulation in both 90 Hz and 240 Hz (Figures 5 and 6). The simulation and hardware implemenations with low latency show similar behavior of how the wheels are increasingly late.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -86,17 +86,17 @@ I also implemented the controller on hardware. I placed the inertial measurement
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         <div class="caption">
-            Figure 5: LIMMS Hardware on Low Frequency and Stability Communication
+            Figure 4: LIMMS Hardware on Low Frequency and Stability Communication
         </div>
     </div>
     <div class="col-sm mt-3 mt-md-0">
         <div class="caption">
-            Figure 6: LIMMS Simulation (90Hz)
+            Figure 5: LIMMS Simulation (90Hz)
         </div>
     </div>
     <div class="col-sm mt-3 mt-md-0">
         <div class="caption">
-            Figure 7: LIMMS Simulation (240Hz)
+            Figure 6: LIMMS Simulation (240Hz)
         </div>
     </div>
 </div>
@@ -115,7 +115,7 @@ While the inverted pendulum method of mobility may be interesting, it is not nec
 
 <iframe src="https://drive.google.com/file/d/1Wt6Fxywwo53e-WAJfcoaqbFrwoyWlKTA/preview" width="640" height="480" allow="autoplay"></iframe>
 
-I used SciPy's optimization library to find the optimal configuration of the Tri-wheeled mode. I constrained the lateral and longitudinal widths of the mode and maximized the area of the support polygon. Below are videos and figures that show the effet of different constraints. When the depth of the wheels are not constrained, it can be observed that the wheels stretch out as far as possible to maximize the support polygon area (Figure 8). The configuration seems to "bunch up" when both the width and depth are constrained (Figures 9 and 10).
+I used SciPy's optimization library to find the optimal configuration of the Tri-wheeled mode. I constrained the lateral and longitudinal widths of the mode and maximized the area of the support polygon. Below are videos and figures that show the effet of different constraints. When the depth of the wheels are not constrained, it can be observed that the wheels stretch out as far as possible to maximize the support polygon area (Figure 7). The configuration seems to "bunch up" when both the width and depth are constrained (Figures 8 and 9).
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -126,7 +126,7 @@ I used SciPy's optimization library to find the optimal configuration of the Tri
     </div>
 </div>
 <div class="caption">
-    Figure 8: Constraints only on Width
+    Figure 7: Constraints only on Width
 </div>
 
 <div class="row">
@@ -138,7 +138,7 @@ I used SciPy's optimization library to find the optimal configuration of the Tri
     </div>
 </div>
 <div class="caption">
-    Figure 9: Constraints on Width and Depth
+    Figure 8: Constraints on Width and Depth
 </div>
 
 <div class="row">
@@ -150,5 +150,5 @@ I used SciPy's optimization library to find the optimal configuration of the Tri
     </div>
 </div>
 <div class="caption">
-    Figure 10: Increased Constraints on Width and Depth
+    Figure 9: Increased Constraints on Width and Depth
 </div>
