@@ -5,7 +5,7 @@ description: Omnidirectional Balancing Unicycle Robot
 img: assets/omburo/img/omburo_sim.png
 importance: 4
 category: work
-related_publications: einstein1956investigations, einstein1950meaning
+related_publications: 
 ---
 
 # Overview
