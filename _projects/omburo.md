@@ -101,6 +101,19 @@ A simulation of OmBURo was built to repeatedly test and assess the feasibility o
     Figure 5: OmBURo model
 </div>
 
+<div class="row">
+    <div class="col">
+    </div>
+    <div class="col-8">
+        {% include figure.html path="assets/omburo/gif/omburo_sim_gif.gif" title="omburo sample sim" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col">
+    </div>
+</div>
+<div class="caption">
+    OmBURo Simulation
+</div>
+
 Gaussian white noise was added to the actuator and IMU readings to mimic the hardware as best as possible. The timestep of the simulation was set to 1/240. Due to the limitations of the simulation, there is a key difference in the actuation approach compared to the hardware implementation. Rollers and the wheel are driven separately unlike in the hardware implementation which uses a differential drive method to run the wheel and motors. 
 
 To begin with, to verify the derived dynamics of OmBURo's gyroscopic precession, an expected yaw rate calculated using OmBURo's yaw rate relationship is compared to the ground truth yaw rate from the simulator.
