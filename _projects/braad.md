@@ -35,5 +35,5 @@ To successfully perform a trapping maneuver, BRAAD must perform the following se
 The calculated joint trajectories will then perform the following tasks:
 1. Move the end-effector to the interception point
 2. Travel along the predicted ball trajectory, and establish contact with the ball at its current velocity (to avoid the ball bouncing off).
-3. Slow down the ball by bradually reducing the end-effector velocity until both the robot and ball are at rest.
+3. Slow down the ball by gradually reducing the end-effector velocity until both the robot and ball are at rest.
 
