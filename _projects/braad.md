@@ -2,7 +2,7 @@
 layout: page
 title: BRAAD
 description: Ball Receiving Autonomously Actuated Device
-img: 
+img: assets/braad/img/braad_nolabels.jpg
 importance: 5
 category: work
 related_publications: 
@@ -102,4 +102,4 @@ Feedforward compensation can be utilized since desired trajectories need to be g
 To trap an incoming ball, the system must perform many preliminary and real-time calculations in order to analyze the ball and generate trajectories to feed into the position or velocity controllers. Since we wanted to reduce computing time whenever possible, certain steps were pre-calculated based on BRAAD's physical parameters to assist the controller in generating desired trajectories. 
 
 ## Point of Interception
-If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to settle on a single location. The forward kinematics of the 3R system is derived to compute the manipulability. For link lengths $L_{1}$, $L_{2}$, and $L_{3}$, with joint angles $\theta_{1}$, $\theta_{2}$, and $\theta_{3}$, the forward kinematics for the system are:
+If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to settle on a single location. The forward kinematics of the 3R system is derived to compute the manipulability. For link lengths $$L_{1}$$, $$L_{2}$$, and $$L_{3}$$, with joint angles $$\theta_{1}$$, $$\theta_{2}$$, and $$\theta_{3}$$, the forward kinematics for the system are:
