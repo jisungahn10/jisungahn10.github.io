@@ -106,14 +106,14 @@ If the ball's predicted trajectory were to cross the robot's workspace, there ar
 
 \begin{equation}
 \begin{bmatrix}
-x
-y
+x \\
+y \\
 \phi
 \end{bmatrix}
 =
 \begin{bmatrix}
-L_{1}c_{1}+L_{2}c_{12}+L_{3}c_{123}
-L_{1}s_{1}+L_{2}s_{12}+L_{3}s_{123}
+L_{1}c_{1}+L_{2}c_{12}+L_{3}c_{123} \\
+L_{1}s_{1}+L_{2}s_{12}+L_{3}s_{123} \\
 \theta_{1}+\theta_{2}+\theta_{3}
 \end{bmatrix}
 \end{equation}
@@ -202,6 +202,6 @@ To improve the system's robustness, a subroutine was implemented in MATLAB that 
 ## Velocity Controller
 Once the point of interception is reached, the robot must then establish controlled contact with the ball. This requires the end-effector to be moving at the same velocity as the ball at the moment of contact to prevent it from bouncing off. Since the ball's predicted trajectory is known, the end-effector can be commanded to move along that path until it reaches the edge of its workspace. However, since the arm is at rest, it is difficult to time the acceleration to match the ball's velocity precisely.
 
-To assist with contact timing, the vision system subroutine is used again. This time, the ball's present location is compared to the end-effector's current location, which is found using forward kinematics. When the ball is a certain distance away, the velocity controller is activated. This threshold distance is calculated using the magnitude of the ball's velocity to grant the end-effector just enough distance to accelerate to the desired velocity. A user-defined time $t_accel$ determines the overall time for acceleration.
+To assist with contact timing, the vision system subroutine is used again. This time, the ball's present location is compared to the end-effector's current location, which is found using forward kinematics. When the ball is a certain distance away, the velocity controller is activated. This threshold distance is calculated using the magnitude of the ball's velocity to grant the end-effector just enough distance to accelerate to the desired velocity. A user-defined time $$t_{accel}$$ determines the overall time for acceleration.
 
-The velocity controller shown in Fig. \ref{fig:controllervel} use the inverse Jacobian to calculate the desired joint velocities:
+The velocity controller shown in Figure 9 use the inverse Jacobian to calculate the desired joint velocities:
