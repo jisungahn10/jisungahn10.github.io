@@ -105,39 +105,39 @@ To trap an incoming ball, the system must perform many preliminary and real-time
 If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to settle on a single location. The forward kinematics of the 3R system is derived to compute the manipulability. For link lengths $$L_{1}$$, $$L_{2}$$, and $$L_{3}$$, with joint angles $$\theta_{1}$$, $$\theta_{2}$$, and $$\theta_{3}$$, the forward kinematics for the system are:
 
 \begin{equation}
-\begin{bmatrix}
+\begin{matrix}
 x\\
 y\\
 \phi
-\end{bmatrix}
+\end{matrix}
 =
-\begin{bmatrix}
+\begin{matrix}
 L_{1}c_{1}+L_{2}c_{12}+L_{3}c_{123}\\
 L_{1}s_{1}+L_{2}s_{12}+L_{3}s_{123}\\
 \theta_{1}+\theta_{2}+\theta_{3}
-\end{bmatrix}
+\end{matrix}
 \end{equation}
 
 These equations were used to find the Jacobian $$J$$ by calculating:
 
 \begin{equation}
 J = 
-\begin{bmatrix}
+\begin{matrix}
 \frac{\partial x}{\partial \theta_1} & \frac{\partial x}{\partial \theta_2} & \frac{\partial x}{\partial \theta_3} \\
 \frac{\partial y}{\partial \theta_1} & \frac{\partial y}{\partial \theta_2} & \frac{\partial y}{\partial \theta_3} \\
 \frac{\partial \phi}{\partial \theta_1} & \frac{\partial \phi}{\partial \theta_2} & \frac{\partial \phi}{\partial \theta_3}
-\end{bmatrix}
+\end{matrix}
 \end{equation}
 
 Performing this calculation yields:
 
 \begin{equation}
 J = 
-\begin{bmatrix}
+\begin{matrix}
 -L_1  s_1-L_2  s_{12}-L_3  s_{123} & L_1 c_1+L_2 c_{12}+L_3 c_{123} & 1 \\
 -L_2  s_{12}-L_3  s_{123} & L_2 c_{12}+L_3 c_{123} & 1 \\
 -L_3  s_{123} & L_3 c_{123} & 1
-\end{bmatrix}
+\end{matrix}
 \end{equation}
 
 From this, we then used the manipulability metric \textit{w} to assess the manipulability for a given point in the workspace. 
@@ -151,9 +151,13 @@ With this metric, the manipulabiliy can be found at several points distributed t
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/matlabmanipulability.jpg" title="manipulability analysis" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/braad/img/matlabmanipulability.jpg" title="manipulability analysis" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
     Figure 4: Monte Carlo Simulation of Manipulability
 </div>
+
+Trapping the ball inside the red region is the best case scenario since the end-effector will need to travel linearly along the ball's path while maintaining a constant end-effector orientation. A point with higher manipulability will have a reduced likelihood that the robot will be unable to perform the required maneuvers to cushion the ball.
+
+While this metric is useful for visualization, it is computationally expensive to perform these calculations in real-time, which can slow down the controller. This is undesirable when the system only has fractions of a second to select the best interception point and generate the trajectory to reach it as the ball approaches. Thus, instead of calculating the manipulability metric and evaluating all potential interception points, this process was simplified by designating a "circle of best manipulability", lying in the center of the region of highest manipulability. This circle is taken to have a radius of 0.265 m from the base of the manipulator, and can be seen as red dotted circle in Figs. \ref{fig:matlabinterception1} and \ref{fig:matlabinterception2}.
