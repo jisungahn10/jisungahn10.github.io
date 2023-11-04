@@ -160,4 +160,34 @@ With this metric, the manipulabiliy can be found at several points distributed t
 
 Trapping the ball inside the red region is the best case scenario since the end-effector will need to travel linearly along the ball's path while maintaining a constant end-effector orientation. A point with higher manipulability will have a reduced likelihood that the robot will be unable to perform the required maneuvers to cushion the ball.
 
-While this metric is useful for visualization, it is computationally expensive to perform these calculations in real-time, which can slow down the controller. This is undesirable when the system only has fractions of a second to select the best interception point and generate the trajectory to reach it as the ball approaches. Thus, instead of calculating the manipulability metric and evaluating all potential interception points, this process was simplified by designating a "circle of best manipulability", lying in the center of the region of highest manipulability. This circle is taken to have a radius of 0.265 m from the base of the manipulator, and can be seen as red dotted circle in Figs. \ref{fig:matlabinterception1} and \ref{fig:matlabinterception2}.
+While this metric is useful for visualization, it is computationally expensive to perform these calculations in real-time, which can slow down the controller. This is undesirable when the system only has fractions of a second to select the best interception point and generate the trajectory to reach it as the ball approaches. Thus, instead of calculating the manipulability metric and evaluating all potential interception points, this process was simplified by designating a "circle of best manipulability", lying in the center of the region of highest manipulability. This circle is taken to have a radius of 0.265 m from the base of the manipulator, and can be seen as red dotted circle in Figure 5.
+
+<div class="col-sm mt-3 mt-md-0">
+    {% include figure.html path="assets/braad/img/matlabinterception1.png" title="interception 1" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption">
+    Figure 5: Circle of Best Manipulability
+</div>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/braad/img/visionpredict.jpg" title="ball prediction" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 6: Ball Trajectory Prediction
+</div>
+
+To generate the ball's predicted trajectory, the vision system captures the most recent 5 frames and determines the ball's X-Y position, direction, and speed in the global frame. From these data points, the system calculates a predicted ball trajectory which forms a straight line through the workspace, as seen in Figure 6. If this line intersects the circle of best manipulability, the system selects the intersection that is closest to the end-effector's current position and generates joint trajectories. Otherwise, the system selects the point on the ball's trajectory that is the shortest distance from the circle.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/braad/img/matlabinterception1.png" title="interception 1" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/braad/img/matlabinterception2.png" title="interception 2" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 7: Point of Interception Selection
+</div>
