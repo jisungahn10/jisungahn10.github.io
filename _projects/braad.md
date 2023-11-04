@@ -103,3 +103,30 @@ To trap an incoming ball, the system must perform many preliminary and real-time
 
 ## Point of Interception
 If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to settle on a single location. The forward kinematics of the 3R system is derived to compute the manipulability. For link lengths $$L_{1}$$, $$L_{2}$$, and $$L_{3}$$, with joint angles $$\theta_{1}$$, $$\theta_{2}$$, and $$\theta_{3}$$, the forward kinematics for the system are:
+
+FORWARD KINEMATICS EQUATIONS
+
+These equations were used to find the Jacobian $$J$$ by calculating:
+
+JACOBIAN EQUATIONS
+
+Performing this calculation yields:
+
+JACOBIAN EQUATIONS
+
+From this, we then used the manipulability metric \textit{w} to assess the manipulability for a given point in the workspace. 
+The Jacobian was used to assess the manipulability for a given point in the workspace.
+\begin{equation}
+w = \sqrt{det(JJ^{T})}
+\end{equation}
+
+With this metric, the manipulabiliy can be found at several points distributed throughout the workspace to visualize the robot's capabilities. Monte Carlo method is used to analyze the manipulability of the robot across the entire workspace (Figure 4), where the red points indicate regions of higher manipulability. A circular region of highest manipulability can be observed from the visualization of the manipulability.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/matlabmanipulability.jpg" title="manipulability analysis" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 4: Monte Carlo Simulation of Manipulability
+</div>
