@@ -104,18 +104,45 @@ To trap an incoming ball, the system must perform many preliminary and real-time
 ## Point of Interception
 If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to settle on a single location. The forward kinematics of the 3R system is derived to compute the manipulability. For link lengths $$L_{1}$$, $$L_{2}$$, and $$L_{3}$$, with joint angles $$\theta_{1}$$, $$\theta_{2}$$, and $$\theta_{3}$$, the forward kinematics for the system are:
 
-FORWARD KINEMATICS EQUATIONS
+\begin{equation}
+\begin{bmatrix}
+x\\
+y\\
+\phi
+\end{bmatrix}
+=
+\begin{bmatrix}
+L_{1}c_{1}+L_{2}c_{12}+L_{3}c_{123}\\
+L_{1}s_{1}+L_{2}s_{12}+L_{3}s_{123}\\
+\theta_{1}+\theta_{2}+\theta_{3}
+\end{bmatrix}
+\end{equation}
 
 These equations were used to find the Jacobian $$J$$ by calculating:
 
-JACOBIAN EQUATIONS
+\begin{equation}
+J = 
+\begin{bmatrix}
+\frac{\partial x}{\partial \theta_1} & \frac{\partial x}{\partial \theta_2} & \frac{\partial x}{\partial \theta_3} \\
+\frac{\partial y}{\partial \theta_1} & \frac{\partial y}{\partial \theta_2} & \frac{\partial y}{\partial \theta_3} \\
+\frac{\partial \phi}{\partial \theta_1} & \frac{\partial \phi}{\partial \theta_2} & \frac{\partial \phi}{\partial \theta_3}
+\end{bmatrix}
+\end{equation}
 
 Performing this calculation yields:
 
-JACOBIAN EQUATIONS
+\begin{equation}
+J = 
+\begin{bmatrix}
+-L_1  s_1-L_2  s_{12}-L_3  s_{123} & L_1 c_1+L_2 c_{12}+L_3 c_{123} & 1 \\
+-L_2  s_{12}-L_3  s_{123} & L_2 c_{12}+L_3 c_{123} & 1 \\
+-L_3  s_{123} & L_3 c_{123} & 1
+\end{bmatrix}
+\end{equation}
 
 From this, we then used the manipulability metric \textit{w} to assess the manipulability for a given point in the workspace. 
 The Jacobian was used to assess the manipulability for a given point in the workspace.
+
 \begin{equation}
 w = \sqrt{det(JJ^{T})}
 \end{equation}
