@@ -178,7 +178,7 @@ While this metric is useful for visualization, it is computationally expensive t
     Figure 6: Ball Trajectory Prediction
 </div>
 
-To generate the ball's predicted trajectory, the vision system captures the most recent 5 frames and determines the ball's X-Y position, direction, and speed in the global frame. From these data points, the system calculates a predicted ball trajectory which forms a straight line through the workspace, as seen in Figure 6. If this line intersects the circle of best manipulability, the system selects the intersection that is closest to the end-effector's current position and generates joint trajectories (Figure 5). Otherwise, the system selects the point on the ball's trajectory that is the shortest distance from the circle (Figure 5).
+To generate the ball's predicted trajectory, the vision system captures the most recent 5 frames and determines the ball's X-Y position, direction, and speed in the global frame. From these data points, the system calculates a predicted ball trajectory which forms a straight line through the workspace, as seen in Figure 6. If this line intersects the circle of best manipulability, the system selects the intersection that is closest to the end-effector's current position and generates joint trajectories (Figure 5). Otherwise, the system selects the point on the ball's trajectory that is the shortest distance from the circle (Figure 7).
 
 <div class="col-sm mt-3 mt-md-0">
     {% include figure.html path="assets/braad/img/matlabinterception2.png" title="interception 2" class="img-fluid rounded z-depth-1" %}
@@ -186,3 +186,22 @@ To generate the ball's predicted trajectory, the vision system captures the most
 <div class="caption">
     Figure 7: No Intersection Case Point Selection
 </div>
+
+## Position Controller
+With the point of interception and predicted ball trajectory identified, BRAAD must now move the end-effector to intercept the ball. First, the system takes the desired end-effector position and uses inverse kinematics to generate a set of desired joint positions that will navigate the end-effector to the point of interception. These are then fed into each Dynamixel motor's internal position controller as desired joint positions (Figure 8). The controller then generates a desired trapezoidal joint trajectory profile. Finally, the motor PWM output is calculated based on the feedforward and PID control terms. The PID control loop uses the encoder value as feedback to drive the error between the present and desired joint positions to zero. Each Dynamixel controller takes user-defined $$K_p$$, $$K_i$$, and $$K_d$$ values. A total of nine gains need to be tuned for BRAAD's position controller.
+
+<div class="col-sm mt-3 mt-md-0">
+    {% include figure.html path="assets/braad/img/controllerpos1.jpg" title="pos controller" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption">
+    Figure 8: Block Diagram of Overall Position Controller with Dynamixel's Internal Position Controller
+</div>
+
+To improve the system's robustness, a subroutine was implemented in MATLAB that uses the vision system to constantly update the desired position. By sensing the ball's current location at certain timesteps, the system actively changes the predicted ball trajectory in real-time. The subroutine  allows the system to adjust if the ball deviates from a straight path due to non-level ground conditions.
+
+## Velocity Controller
+Once the point of interception is reached, the robot must then establish controlled contact with the ball. This requires the end-effector to be moving at the same velocity as the ball at the moment of contact to prevent it from bouncing off. Since the ball's predicted trajectory is known, the end-effector can be commanded to move along that path until it reaches the edge of its workspace. However, since the arm is at rest, it is difficult to time the acceleration to match the ball's velocity precisely.
+
+To assist with contact timing, the vision system subroutine is used again. This time, the ball's present location is compared to the end-effector's current location, which is found using forward kinematics. When the ball is a certain distance away, the velocity controller is activated. This threshold distance is calculated using the magnitude of the ball's velocity to grant the end-effector just enough distance to accelerate to the desired velocity. A user-defined time $t_accel$ determines the overall time for acceleration.
+
+The velocity controller shown in Fig. \ref{fig:controllervel} use the inverse Jacobian to calculate the desired joint velocities:
