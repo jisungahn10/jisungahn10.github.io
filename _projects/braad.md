@@ -156,7 +156,7 @@ Performing this calculation yields:
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-6">
+    <div class="col-8">
         {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col"></div>
@@ -167,7 +167,7 @@ The Jacobian was used to assess the manipulability for a given point in the work
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-6">
+    <div class="col-4">
         {% include figure.html path="assets/braad/img/braad_manipulability.png" title="braad manipulability" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col"></div>
@@ -241,13 +241,13 @@ The velocity controller (Figure 9) uses the inverse Jacobian to calculate the de
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-6">
+    <div class="col-4">
         {% include figure.html path="assets/braad/img/braad_desired_joint_velocities.png" title="braad desired joint velocities" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col"></div>
 </div>
 
-In this equation, $$\dot x$$ and $$\dot y$$ are equal to the ball's last known X and Y velocity in global space, since this is the velocity that we want to match. $\dot \phi$ is set to zero since the ball is traveling in a linear path and we do not want the end-effector's orientation to change in global space.
+In this equation, $$\dot x$$ and $$\dot y$$ are equal to the ball's last known X and Y velocity in global space, since this is the velocity that we want to match. $$\dot \phi$$ is set to zero since the ball is traveling in a linear path and we do not want the end-effector's orientation to change in global space.
 
 The desired joint velocities are then sent to the Dynamixels internal velocity controllers. These generate trapezoidal velocity profiles with accelerations based on $$t_{accel}$$ to ensure the end-effector has the desired velocity during contact. Once contact is established, a deceleration subroutine activates to reduce the velocity until the ball and end-effector reach zero velocity. Each Dynamixel controller takes user-defined $$K_p$$ and $$K_i$$ values, along with $$t_{accel}$$ giving us a total of nine parameters to tune for BRAAD's velocity control.
 
