@@ -104,7 +104,13 @@ To trap an incoming ball, the system must perform many preliminary and real-time
 ## Point of Interception
 If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to settle on a single location. The forward kinematics of the 3R system is derived to compute the manipulability. For link lengths $$L_{1}$$, $$L_{2}$$, and $$L_{3}$$, with joint angles $$\theta_{1}$$, $$\theta_{2}$$, and $$\theta_{3}$$, the forward kinematics for the system are:
 
-\begin{equation}
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/braad/img/braad_forward_kinematics.png" title="braad forward kinematics" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<!-- \begin{equation}
 \[
 \begin{bmatrix}
 x \\
@@ -118,10 +124,16 @@ L_{1}s_{1}+L_{2}s_{12}+L_{3}s_{123} \\
 \theta_{1}+\theta_{2}+\theta_{3}
 \end{bmatrix}
 \]
-\end{equation}
+\end{equation} -->
 
 These equations were used to find the Jacobian $$J$$ by calculating:
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/braad/img/jacobian_general.png" title="jacobian general" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<!-- 
 \begin{equation}
 J = 
 \begin{matrix}
@@ -129,25 +141,24 @@ J =
 \frac{\partial y}{\partial \theta_1} & \frac{\partial y}{\partial \theta_2} & \frac{\partial y}{\partial \theta_3} \\
 \frac{\partial \phi}{\partial \theta_1} & \frac{\partial \phi}{\partial \theta_2} & \frac{\partial \phi}{\partial \theta_3}
 \end{matrix}
-\end{equation}
+\end{equation} -->
 
 Performing this calculation yields:
 
-\begin{equation}
-J = 
-\begin{matrix}
--L_1  s_1-L_2  s_{12}-L_3  s_{123} & L_1 c_1+L_2 c_{12}+L_3 c_{123} & 1 \\
--L_2  s_{12}-L_3  s_{123} & L_2 c_{12}+L_3 c_{123} & 1 \\
--L_3  s_{123} & L_3 c_{123} & 1
-\end{matrix}
-\end{equation}
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 From this, we then used the manipulability metric \textit{w} to assess the manipulability for a given point in the workspace. 
 The Jacobian was used to assess the manipulability for a given point in the workspace.
 
-\begin{equation}
-w = \sqrt{det(JJ^{T})}
-\end{equation}
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/braad/img/braad_manipulability.png" title="braad manipulability" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 With this metric, the manipulabiliy can be found at several points distributed throughout the workspace to visualize the robot's capabilities. Monte Carlo method is used to analyze the manipulability of the robot across the entire workspace (Figure 4), where the red points indicate regions of higher manipulability. A circular region of highest manipulability can be observed from the visualization of the manipulability.
 
