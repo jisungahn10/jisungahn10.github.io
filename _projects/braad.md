@@ -25,12 +25,34 @@ Trapping a ball is different from simply catching a ball, as the act of trapping
 To this end, BRAAD consists of a combined robotic arm and visual sensor system. The robotic platform is designed to serve as the "leg" with an end-effector "foot" that interacts with balls in the environment, and is comprised of rigid links with dynamixel motors as the joints, as seen in Figure 1. The visual sensor is a camera mounted above the task space, pointing directly downwards to view the ball and robotic arm in the floor plane, as depicted in Figure 2.
 
 <div class="row">
+    <div class="col"></div>
+    <div class="col-8">
+        {% include figure.html path="assets/braad/img/BRAAD.jpg" title="braad manipulator" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col"></div>
+</div>
+<div class="caption">
+    Figure 1: Manipulator
+</div>
+
+<div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/braad/img/BRAAD.jpg" title="braad manipulator" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
     Figure 1: Manipulator
+</div>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-10">
+        {% include figure.html path="assets/braad/img/visioncad.jpg" title="overall system" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col"></div>
+</div>
+<div class="caption">
+    Figure 2: Overall System
 </div>
 
 <div class="row">
@@ -105,6 +127,14 @@ To trap an incoming ball, the system must perform many preliminary and real-time
 If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to settle on a single location. The forward kinematics of the 3R system is derived to compute the manipulability. For link lengths $$L_{1}$$, $$L_{2}$$, and $$L_{3}$$, with joint angles $$\theta_{1}$$, $$\theta_{2}$$, and $$\theta_{3}$$, the forward kinematics for the system are:
 
 <div class="row">
+    <div class="col"></div>
+    <div class="col-8">
+        {% include figure.html path="assets/braad/img/braad_forward_kinematics.png" title="braad forward kinematics" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col"></div>
+</div>
+
+<div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/braad/img/braad_forward_kinematics.png" title="braad forward kinematics" class="img-fluid rounded z-depth-1" %}
     </div>
@@ -129,6 +159,14 @@ L_{1}s_{1}+L_{2}s_{12}+L_{3}s_{123} \\
 These equations were used to find the Jacobian $$J$$ by calculating:
 
 <div class="row">
+    <div class="col"></div>
+    <div class="col-8">
+        {% include figure.html path="assets/braad/img/jacobian_general.png" title="jacobian general" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col"></div>
+</div>
+
+<div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/braad/img/jacobian_general.png" title="jacobian general" class="img-fluid rounded z-depth-1" %}
     </div>
@@ -146,13 +184,29 @@ J =
 Performing this calculation yields:
 
 <div class="row">
+    <div class="col"></div>
+    <div class="col-4">
+        {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col"></div>
+</div>
+
+<div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-From this, we then used the manipulability metric \textit{w} to assess the manipulability for a given point in the workspace. 
+From this, we then used the manipulability metric $$w$$ to assess the manipulability for a given point in the workspace. 
 The Jacobian was used to assess the manipulability for a given point in the workspace.
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-8">
+        {% include figure.html path="assets/braad/img/braad_manipulability.png" title="braad manipulability" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col"></div>
+</div>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
