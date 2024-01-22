@@ -268,4 +268,34 @@ After many iterations, the best gains were determined (tabluated below):
     </div>
 </div>
 
-Data outputs from the trial with gains tuned are shown in Figs. \ref{fig:positionall} and \ref{fig:velocityall}. Velocity values were calculated using the position data, dividing the difference between entries by the elapsed time. The data shown for all joint velocity graphs has been subjected to smoothing using the last 10 values in the data, since the velocity values were calculated by taking the numerical derivative of the joint positions with resepct to time. % the signals were erratic otherwise.
+The joint positions and velocities with gained tunes are shown in Figures 10 and 11. Velocities were obtained using finite differentiation of the positions. The data shown for all joint velocity graphs has been subjected to smoothing using the last 10 values in the data due to the sensitivity of numerical differentiations to noise in the position data.
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        {% include figure.html path="assets/braad/img/positionall.jpg" title="all joint positions" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-2"></div>
+</div>
+<div class="caption">
+    Figure 10: Joint Positions (Stage 1)
+</div>
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        {% include figure.html path="assets/braad/img/velocityall.jpg" title="all joint velocities" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-2"></div>
+</div>
+<div class="caption">
+    Figure 11: Joint Velocities (Stage 2)
+</div>
+
+The selected position controller gains successfully achieved the goal of settling within 0.5 seconds. During trials, the robot could easily reach the interception point in time to receive the ball. The velocity controller was also able to closely follow the desired velocities, resulting in a well-timed contact with the ball and controlled deceleration. 
+
+## Error Assessment
+Because the desired positions and velocities 
+Because the desired positions and velocities for each set of gains were different, it was difficult to benchmark performance. To assist in selecting the best gain values and evaluating the performance of our system overall, we plotted the cumulative error over time for different gains. When cumulative error becomes flat, it means that the system has reached steady state. The cumulative error is useful because it shows not only when the system has reached steady state, but also the total amount of deviation of the desired value. The chosen $K_p$ gains are clearly the best set of gains because their accumulated error becomes flat in the shortest amount of time and has the smallest amount of accumulated total error. 
+
+Example graphs for tuning $K_p$ are shown in \ref{fig:PosCumErr_TuningKp} and \ref{fig:VelCumErr_TuningKp}, with graphs for tuning the other gains available in the Appendix. In these error graphs, the gain we ultimately selected is in bright green. We selected gain values that generated the least amount of error and exhibited favorable behaviors, with sufficient rising times and minimal oscillations.
