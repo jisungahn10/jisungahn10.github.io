@@ -251,6 +251,13 @@ In this equation, $$\dot x$$ and $$\dot y$$ are equal to the ball's last known X
 
 The desired joint velocities are then sent to the Dynamixels internal velocity controllers. These generate trapezoidal velocity profiles with accelerations based on $$t_{accel}$$ to ensure the end-effector has the desired velocity during contact. Once contact is established, a deceleration subroutine activates to reduce the velocity until the ball and end-effector reach zero velocity. Each Dynamixel controller takes user-defined $$K_p$$ and $$K_i$$ values, along with $$t_{accel}$$ giving us a total of nine parameters to tune for BRAAD's velocity control.
 
+# Results
+## Gain Tuning
+
+<!-- TODO: ADD VIDEO OF TRAPPING -->
+Above is a demonstration of trapping a moving object. To get repeatable results, the ball was propelled using only gravity by placing it on a small 3D printed ramp. Doing so maintained a consistent position, direction, and speed between trials. For the first stage (position control), data was collected for BRAAD's joint angles $$q_1$$, $$q_2$$, and $$q_3$$, as well as desired reference angles $$q_{1des}$$, $$q_{2des}$$, and $$q_{3des}$$. Additionally, the timestamp $$t$$ after each control loop was recorded to keep track of the time between frames. The ball's position in the global X-Y frame was also recorded as $$x_{ball}$$ and $$y_{ball}$$. For the second stage (velocity control), data was collected for BRAAD's joint velocities $$\dot q_1$$, $$\dot q_2$$, and $$\dot q_3$$, as well as desired reference velocities $$\dot q_{1des}$$, $$\dot q_{2des}$$, and $$\dot q_{3des}$$.
+
+After many iterations, the best gains were determined (tabluated below):
 <div class="row">
     <div class="col-2">
     </div>
@@ -260,3 +267,5 @@ The desired joint velocities are then sent to the Dynamixels internal velocity c
     <div class="col-2">
     </div>
 </div>
+
+Data outputs from the trial with gains tuned are shown in Figs. \ref{fig:positionall} and \ref{fig:velocityall}. Velocity values were calculated using the position data, dividing the difference between entries by the elapsed time. The data shown for all joint velocity graphs has been subjected to smoothing using the last 10 values in the data, since the velocity values were calculated by taking the numerical derivative of the joint positions with resepct to time. % the signals were erratic otherwise.
