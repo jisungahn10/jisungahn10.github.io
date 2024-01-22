@@ -36,29 +36,11 @@ To this end, BRAAD consists of a combined robotic arm and visual sensor system. 
 </div>
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/braad/img/BRAAD.jpg" title="braad manipulator" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Figure 1: Manipulator
-</div>
-
-<div class="row">
     <div class="col"></div>
     <div class="col-10">
         {% include figure.html path="assets/braad/img/visioncad.jpg" title="overall system" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col"></div>
-</div>
-<div class="caption">
-    Figure 2: Overall System
-</div>
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/braad/img/visioncad.jpg" title="overall system" class="img-fluid rounded z-depth-1" %}
-    </div>
 </div>
 <div class="caption">
     Figure 2: Overall System
@@ -128,16 +110,10 @@ If the ball's predicted trajectory were to cross the robot's workspace, there ar
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-8">
+    <div class="col-6">
         {% include figure.html path="assets/braad/img/braad_forward_kinematics.png" title="braad forward kinematics" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col"></div>
-</div>
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/braad/img/braad_forward_kinematics.png" title="braad forward kinematics" class="img-fluid rounded z-depth-1" %}
-    </div>
 </div>
 
 <!-- \begin{equation}
@@ -160,17 +136,12 @@ These equations were used to find the Jacobian $$J$$ by calculating:
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-8">
+    <div class="col-6">
         {% include figure.html path="assets/braad/img/jacobian_general.png" title="jacobian general" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col"></div>
 </div>
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/braad/img/jacobian_general.png" title="jacobian general" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
 <!-- 
 \begin{equation}
 J = 
@@ -185,16 +156,10 @@ Performing this calculation yields:
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-4">
+    <div class="col-6">
         {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col"></div>
-</div>
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded z-depth-1" %}
-    </div>
 </div>
 
 From this, we then used the manipulability metric $$w$$ to assess the manipulability for a given point in the workspace. 
@@ -202,16 +167,10 @@ The Jacobian was used to assess the manipulability for a given point in the work
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-8">
+    <div class="col-6">
         {% include figure.html path="assets/braad/img/braad_manipulability.png" title="braad manipulability" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col"></div>
-</div>
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/braad/img/braad_manipulability.png" title="braad manipulability" class="img-fluid rounded z-depth-1" %}
-    </div>
 </div>
 
 With this metric, the manipulabiliy can be found at several points distributed throughout the workspace to visualize the robot's capabilities. Monte Carlo method is used to analyze the manipulability of the robot across the entire workspace (Figure 4), where the red points indicate regions of higher manipulability. A circular region of highest manipulability can be observed from the visualization of the manipulability.
@@ -271,4 +230,23 @@ Once the point of interception is reached, the robot must then establish control
 
 To assist with contact timing, the vision system subroutine is used again. This time, the ball's present location is compared to the end-effector's current location, which is found using forward kinematics. When the ball is a certain distance away, the velocity controller is activated. This threshold distance is calculated using the magnitude of the ball's velocity to grant the end-effector just enough distance to accelerate to the desired velocity. A user-defined time $$t_{accel}$$ determines the overall time for acceleration.
 
-The velocity controller shown in Figure 9 use the inverse Jacobian to calculate the desired joint velocities:
+The velocity controller (Figure 9) uses the inverse Jacobian to calculate the desired joint velocities:
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-6">
+        {% include figure.html path="assets/braad/img/braad_desired_joint_velocities.png" title="braad desired joint velocities" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col"></div>
+</div>
+
+
+<div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        {% include figure.html path="assets/braad/img/braad_controller_gains.png" title="braad controller gains" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-2">
+    </div>
+</div>
