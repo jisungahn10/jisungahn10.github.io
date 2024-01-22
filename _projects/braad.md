@@ -230,6 +230,13 @@ Once the point of interception is reached, the robot must then establish control
 
 To assist with contact timing, the vision system subroutine is used again. This time, the ball's present location is compared to the end-effector's current location, which is found using forward kinematics. When the ball is a certain distance away, the velocity controller is activated. This threshold distance is calculated using the magnitude of the ball's velocity to grant the end-effector just enough distance to accelerate to the desired velocity. A user-defined time $$t_{accel}$$ determines the overall time for acceleration.
 
+<div class="col-sm mt-3 mt-md-0">
+    {% include figure.html path="assets/braad/img/controllerpos1.jpg" title="pos controller" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption">
+    Figure 9: Block Diagram of Overall Velocity Controller with Dynamixel's Internal Velocity Controller
+</div>
+
 The velocity controller (Figure 9) uses the inverse Jacobian to calculate the desired joint velocities:
 
 <div class="row">
@@ -240,6 +247,9 @@ The velocity controller (Figure 9) uses the inverse Jacobian to calculate the de
     <div class="col"></div>
 </div>
 
+In this equation, $$\dot x$$ and $$\dot y$$ are equal to the ball's last known X and Y velocity in global space, since this is the velocity that we want to match. $\dot \phi$ is set to zero since the ball is traveling in a linear path and we do not want the end-effector's orientation to change in global space.
+
+The desired joint velocities are then sent to the Dynamixels internal velocity controllers. These generate trapezoidal velocity profiles with accelerations based on $$t_{accel}$$ to ensure the end-effector has the desired velocity during contact. Once contact is established, a deceleration subroutine activates to reduce the velocity until the ball and end-effector reach zero velocity. Each Dynamixel controller takes user-defined $$K_p$$ and $$K_i$$ values, along with $$t_{accel}$$ giving us a total of nine parameters to tune for BRAAD's velocity control.
 
 <div class="row">
     <div class="col-2">
