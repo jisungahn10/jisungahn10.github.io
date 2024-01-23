@@ -335,25 +335,27 @@ Figures 12, 13, and 14 show the cumulative error data used to tune the $$K_p$$, 
 Figures 15 and 16 show the cumulative error data used to tune the $$K_p$$ and $$K_i$$ gains for the velocity controller.
 
 <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-12">
         {% include figure.html path="assets/braad/img/VelCumErr_TuningKp.png" title="tuning Kp velocity controller cumulative error" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-2"></div>
 </div>
 <div class="caption">
     Figure 15: Joint Velocity Cumulative Error for different $$K_p$$
 </div>
 
 <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-12">
         {% include figure.html path="assets/braad/img/VelCumErr_TuningKi.png" title="tuning Ki velocity controller cumulative error" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-2"></div>
 </div>
 <div class="caption">
     Figure 16: Joint Velocity Cumulative Error for different $$K_i$$
 </div>
 
 The gains that generated the least amount of error, minimal rising times, and shortest settling times were selected. In these error graphs, the selected gains are in bright green.
+
+# Discussion
+## Effects of Gain Tuning
+For the position controller, $$K_p$$, $$K_i$$, and $$K_d$$ were set to be the same for all joints while tuning. Similarly, for the velocity controller, $K_p$ and $K_i$ were the same for all joints. Though trial repeatability and consistency was maximized by rolling the ball down the ramp from the same height for every trial, there were small variations between trials due to human error. Figures 17 through 21 show the joint positions and velocities depending on the gains. The positions and velocities in bright green indicate the best gains found. The blacked dashed lines indicate the desired positions and velocities during the trial when using the best gains.
+
+It should be noted that although we tried to maximize trial repeatability by rolling the ball down the ramp, small variations between trials caused slight differences in timing. For the summary graphs beginning with Fig. \ref{fig:positionkp}, the gain denoted by the green line indicates the best value we found before proceeding to the next set of gains, while the desired values are indicated by the black dotted lines, taken from the trial with the best gain. It should also be noted that only certain gains are included on these graphs. We have omitted other gain values and have selected only the ones that best clarify the effects of gain tuning.
