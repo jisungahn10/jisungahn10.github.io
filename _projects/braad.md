@@ -386,4 +386,69 @@ Figure 19 shows the results of tuning $$K_i$$, with $$K_p$$ = 850 and $$K_d$$ = 
     Figure 19: Joint 2 Positions with varying $$K_i$$
 </div>
 
+While the effects of changing $$K_p$$ matched the expectations of how P gains influence performance, the same cannot be said about the I and D gains. Increasing the I gain was expected to improve the steady state error and possibly cause more oscillations. Instead, the addition of the I gain to the controller removed oscillations. D gains are typically used to add damping to the system and reduce overshoot. Instead, the D gain succeeded in helping the system respond quicker and reduce the steady state error. These observations suggest that gains may have been switched during the implementation of setting the gains. The implementation showed no errors as the gains were assigned according to the documentation provided by the Dynamixel SDK. However, after further meticulous review, it was confirmed that the documentation is ambiguous about the gain addresses for the I and D gains. As seen below, the table suggests that the address of the D gain is 80, but the diagram shows the address of the D gain as 82. Additionally, the table says the address of the I gain is 82, but the diagram shows the address of the I gain as 80. Based on the responses when tuning these values, the diagram is in line with what is expected.
+
+<div class="row">
+    <div class="col-12">
+        {% include figure.html path="assets/braad/img/dynamixel_documentation.png" title="dynamixel documentation" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+Link to documentation: https://emanual.robotis.com/docs/en/dxl/mx/mx-28-2/#position-d-gain
+
 ### Velocity Controller
+Figure 20 shows the results of tuning $$K_p$$, with $$K_i$$ = 0. For these trials, values lower than $$K_p$$ = 500 did not produce velocities high enough to reach the desired velocities at all. $$K_p$$ = 1000 did the best at matching the desired values while having minimal oscillations. For very high $$K_p$$ values in the thousands, the oscillations became very large, which resulted in violet shaking and imprecise ball contact.
+
+<div class="row">
+    <div class="col-12">
+        {% include figure.html path="assets/braad/img/velocitykp.jpg" title="joint 2 velocities varying Kp" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 20: Joint 2 Velocities with varying $$K_p$$
+</div>
+
+Figure 21 shows the results of tuning $$K_i$$, with $$K_p$$ = 1000. This resulted in significantly reduced the magnitude of the unwanted oscillations. 
+
+<div class="row">
+    <div class="col-12">
+        {% include figure.html path="assets/braad/img/velocityki.jpg" title="joint 2 velocities varying Ki" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 21: Joint 2 Velocities with varying $$K_i$$
+</div>
+
+Because none of the iterations with $$K_p$$ = 1000 looked promising, $$K_i$$ was fixed and $$K_p$$ was re-tuned. $$K_i$$ = 5000 was selected because it looked to be the only $$K_i$$ that drove the velocities closer to the desired velocities. With $$K_i$$ = 5000, $$K_p$$ = 500 looked to show the best velocity tracking performance as seen in Figure 16 (shown below again).
+
+<div class="row">
+    <div class="col-12">
+        {% include figure.html path="assets/braad/img/VelCumErr_TuningKi.png" title="tuning Ki velocity controller cumulative error" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 16: Joint Velocity Cumulative Error for different $$K_i$$
+</div>
+
+## Controller Performance
+Overall, the position controller performed excellently at tracking the ball in real-time and moving quickly to a desired position. After a short initial delay of 0.1-0.2 seconds from gathering frames, the arm would move to the interception point and typically settle within 0.5 seconds, which was found to be more than sufficient for the max ball velocity of 1 m/s. The velocity controller performed similarly well, closely following the calculated velocity path that would intercept the ball at its matched velocity. 
+
+While most attempts were successful, the system would sometimes intercept the ball at the wrong velocity, causing the ball to bounce off. This is because of inaccuracies with the vision system, which could not always accurately calculate velocity due to the frames not capturing at a regular speed. These hardware limitations could be exacerbated by changes in lighting or camera focus.
+
+Due to the use of decentralized control, the controller did not perform well at ball speeds above 1 m/s, or when timing parameters such as $$t_{accel}$$ were set to be too fast, causing significant dynamic coupling effects that were initially assumed negligible. This behavior could be seen on the position and velocity graphs as the first and second links fought each other to reach their desired positions. These torques could ultimately move the end-effector far enough off course to impact the ball in unintended ways, resulting in various phenomena, such as the ball being forced beneath the end-effector or being kicked away.
+
+The controller was also limited by the sequential algorithmic structure. With the current ball's testing speed, the impact was minimal, but for higher ball speeds, the algorithm did not have enough time to capture and process the frame data at 30fps. It would not respond quickly enough to reliably trap balls traveling through the workspace faster than 1 m/s.
+
+<!-- ## Challenges
+The first challenges faced by the team were related to the vision sub-system. The DEPSTECH 4k webcam allows for a number of image outputs and has the capability to run at greater than 30 fps. However, computational speed becomes the bottleneck in image processing. The computations that occur for each frame measures a time per loop that is slower than 30 hz, fluctuating between 50 and 70 ms. After initial tests with ball speeds of 1.5 m/s, we reduced the ball speed to less than 1 m/s, which allowed for enough computation to take place in the average 0.1 to 0.2 seconds of time between first ball detection and trapping sequence.
+
+Secondly, the computer vision system required a sizable amount of time to be dedicated to calibration and set up, as the team embarked on mapping pixel space to operational space prior to coverage in 263C lecture. The team found positional offsets and a scaling factor by hand, measuring pixel count across a still image and comparing to known distances in the workspace.  
+
+Of note is the fact that positional offsets are done in pixel space, based on the location of the base frame in the camera's view. This location is defined as the rotational axis of the first manipulator joint.
+
+Initially, the vision system began as a quasi-open loop system. In its first iteration, the system registered a set number of frames in which it had identified and recorded the ball. It then conducted a an estimation of ball trajectory and velocity and then handed off to the planning of joint trajectory and motor control. This method led to errors and trapping sequence failures, as the arm would be sent to an incorrect intercept location. In the final version of the system, the vision loop runs continuously to compute an updating and most accurate ball trajectory. There exists a trade-off as motor control and image processing occur sequentially in a loop rather than as parallel entities. Future work might involve separating moving motor control, vision, and predicted ball trajectory calculation across different processing units. 
+
+Further error and difficulty resulted from our non-uniform testing environment. Disturbances to the ball's trajectory from the uneven floor of the Engineering IV building disrupted the assumption of a linear 2D ball trajectory. This also influenced the groups motivation to close the outer loop vision control with continuous updates, which improved the reliability significantly since it could adapt to changes in trajectory. However, we also eventually transitioned to performing trials on a level conference table to further improve reliability.
+
+Communicating with the Dynamixels occasionally created issues as well. Some functions within the Dynamixel software development kit were not functional. For example, groupSync functions could not be called, so the slower and computationally heavier groupBulk functions had to be used. Joint velocities also could not be read from the Dynamixels, so joint positions were numerically differentiated with respect to time. Workaround methods were found through trial and error, such as writing gain values to each dynamixel individually instead of group writing them. -->
+
