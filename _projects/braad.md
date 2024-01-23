@@ -353,5 +353,37 @@ The gains that generated the least amount of error, minimal rising times, and sh
 For the position controller, $$K_p$$, $$K_i$$, and $$K_d$$ were set to be the same for all joints while tuning. Similarly, for the velocity controller, $$K_p$$ and $$K_i$$ were the same for all joints. Though trial repeatability and consistency was maximized by rolling the ball down the ramp from the same height for every trial, there were small variations between trials due to human error. Figures 17 through 21 show the joint positions and velocities depending on the gains. The positions and velocities in bright green indicate the best gains found. The blacked dashed lines indicate the desired positions and velocities during the trial when using the best gains. Only the positions and velocities of joint 2 are shown because the effects of different gains were most exemplified for joint 2.
 
 ### Position Controller
+Figure 17 shows the results of tuning $$K_p$$, with $$K_i$$ and $$K_d$$ set to zero. $$K_p$$ values below 100 did not reach the interception point in time to receive the ball. The best value was explored between 500 and 1000, which slightly undershot and overshot the desired values in their respective trials. A $$K_p$$ value of 850 was found to be best, reaching the desired position within 0.6 seconds.
+
+<div class="row">
+    <div class="col-12">
+        {% include figure.html path="assets/braad/img/positionkp.jpg" title="joint 2 positions varying Kp" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 17: Joint 2 Positions with varying $$K_p$$
+</div>
+
+Figure 18 shows the results of tuning $$K_d$$, with $$K_p$$ = 850 and $$K_i$$ = 0. Looking at t = 0 to 0.3 s, increasing $$K_d$$ appears to improve the response time as the signal begins to rise sooner. $$K_d$$ = 3000 was chosen to have the best performance across all three joints, even though $$K_d$$ = 10000 had a quicker response time.
+
+<div class="row">
+    <div class="col-12">
+        {% include figure.html path="assets/braad/img/positionkd.jpg" title="joint 2 positions varying Kd" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 18: Joint 2 Positions with varying $$K_d$$
+</div>
+
+Figure 19 shows the results of tuning $$K_i$$, with $$K_p$$ = 850 and $$K_d$$ = 3000. $$K_i$$ eliminated many of the "bumps" in the movement, but did otherwise not have a large effect. $$K_i$$ = 30 was chosen because the joint tended to overshoot when $$K_i$$ was further increased.
+
+<div class="row">
+    <div class="col-12">
+        {% include figure.html path="assets/braad/img/positionki.jpg" title="joint 2 positions varying Ki" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 19: Joint 2 Positions with varying $$K_i$$
+</div>
 
 ### Velocity Controller
