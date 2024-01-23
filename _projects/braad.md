@@ -300,33 +300,27 @@ Because the desired positions and velocities for each set of gains were differen
 Figures 12, 13, and 14 show the cumulative error data used to tune the $$K_p$$, $$K_d$$, and $$K_i$$ gains for the position controller. 
 
 <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-12">
         {% include figure.html path="assets/braad/img/PosCumErr_TuningKp.png" title="tuning Kp position controller cumulative error" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-2"></div>
 </div>
 <div class="caption">
     Figure 12: Joint Position Cumulative Error for different $$K_p$$
 </div>
 
 <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-12">
         {% include figure.html path="assets/braad/img/PosCumErr_TuningKd.png" title="tuning Kd position controller cumulative error" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-2"></div>
 </div>
 <div class="caption">
     Figure 13: Joint Position Cumulative Error for different $$K_d$$
 </div>
 
 <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-12">
         {% include figure.html path="assets/braad/img/PosCumErr_TuningKi.png" title="tuning Ki position controller cumulative error" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-2"></div>
 </div>
 <div class="caption">
     Figure 14: Joint Position Cumulative Error for different $$K_i$$
