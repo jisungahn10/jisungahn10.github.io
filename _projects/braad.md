@@ -440,6 +440,7 @@ Due to the use of decentralized control, the controller did not perform well at 
 The controller was also limited by the sequential algorithmic structure. With the current ball's testing speed, the impact was minimal, but for higher ball speeds, the algorithm did not have enough time to capture and process the frame data at 30fps. It would not respond quickly enough to reliably trap balls traveling through the workspace faster than 1 m/s.
 
 TEST CHANGES TO BRAAD
+
 <!-- ## Challenges
 The first challenges faced by the team were related to the vision sub-system. The DEPSTECH 4k webcam allows for a number of image outputs and has the capability to run at greater than 30 fps. However, computational speed becomes the bottleneck in image processing. The computations that occur for each frame measures a time per loop that is slower than 30 hz, fluctuating between 50 and 70 ms. After initial tests with ball speeds of 1.5 m/s, we reduced the ball speed to less than 1 m/s, which allowed for enough computation to take place in the average 0.1 to 0.2 seconds of time between first ball detection and trapping sequence.
 
