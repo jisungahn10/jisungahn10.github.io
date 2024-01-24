@@ -454,6 +454,14 @@ Furthermore, soccer and other ball sports are played in 3D space. Future work ca
 
 Further applications to other ball sports and human robot interaction could be another field to explore with BRAAD in the future. The action of softly cushioning incoming the objects is ideal in the context of fragile biological organisms. The controller could also be applied in a reverse framework: consider the manipulator arm moving towards a target rather than the target moving towards the manipulator. This interception method could then be used to cushion the manipulator from the target, decelerating it similar to a landing action.
 
+
+<div class="row">
+    <div class="col-12">
+        <iframe src="https://drive.google.com/file/d/1Wt6Fxywwo53e-WAJfcoaqbFrwoyWlKTA/preview" width="640" height="480" allow="autoplay"></iframe>
+    </div>
+</div>
+
+
 <!-- # Conclusion
 The demonstrations showcase BRAAD's ability to visually sense oncoming balls and intercept it in a controlled fashion. It achieves this by predicting the ball's movement and matching its velocity at the point of contact before gently decelerating. This project provided invaluable experience to our group, reinforcing key controls concepts, granting us increased physical intuition with controller gains, and appreciation for the complexities of interfacing with physical and digital hardware. With this newfound knowledge, BRAAD will serve as an important stepping stone for our future work with robotic systems, utilizing our controls and hardware experiences to enhance their capabilities for the good of mankind. -->
 

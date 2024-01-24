@@ -53,4 +53,4 @@ The subsumption architecture used for RoboCup 2023 is shown in Figure 3. The low
 </div>
 
 # Reinforcement Learning
-I also attempted to develop ([strategic game behavior using reinforcement learning](https://jisungahn10.github.io/projects/deeprl/)) in another project as well!
+I also attempted to develop [strategic game behavior using reinforcement learning](https://jisungahn10.github.io/projects/deeprl/) in another project as well!
