@@ -83,6 +83,9 @@
                   {%- endif -%}
                 </a>
               </li>
+              {%- endif -%}
+              {%- endif -%}
+              {% endfor -%}
 
               <!-- About -->
               <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
@@ -92,10 +95,7 @@
                   {%- endif -%}
                 </a>
               </li>
-
-              {%- endif -%}
-              {%- endif -%}
-              {% endfor -%}
+              
               {%- if site.enable_darkmode %}
 
               <!-- Toogle theme mode -->
