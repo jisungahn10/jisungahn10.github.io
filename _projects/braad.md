@@ -463,7 +463,13 @@ Further applications to other ball sports and human robot interaction could be a
 
 <div class="row">
     <div class="col-12">
-        {% include video.html extension="assets/braad/vid/braad1.mp4" }
+        {% include video.html path="assets/braad/vid/braad1.mp4" }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        {% include figure.html path="assets/braad/img/VelCumErr_TuningKi.png" title="tuning Ki velocity controller cumulative error" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
