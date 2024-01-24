@@ -7,7 +7,7 @@ importance: 5
 category: work
 related_publications: 
 toc: 
-    beginning: true
+    sidebar: left
 ---
 
 # Overview
@@ -256,7 +256,12 @@ The desired joint velocities are then sent to the Dynamixels internal velocity c
 # Results
 ## Gain Tuning
 
-<!-- TODO: ADD VIDEO OF TRAPPING -->
+<div class="row">
+    <div class="col-12">
+        {% include video.html path="assets/braad/vid/braad1.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
+    </div>
+</div>
+
 Above is a demonstration of trapping a moving object. To get repeatable results, the ball was propelled using only gravity by placing it on a small 3D printed ramp. Doing so maintained a consistent position, direction, and speed between trials. For the first stage (position control), data was collected for BRAAD's joint angles $$q_1$$, $$q_2$$, and $$q_3$$, as well as desired reference angles $$q_{1des}$$, $$q_{2des}$$, and $$q_{3des}$$. Additionally, the timestamp $$t$$ after each control loop was recorded to keep track of the time between frames. The ball's position in the global X-Y frame was also recorded as $$x_{ball}$$ and $$y_{ball}$$. For the second stage (velocity control), data was collected for BRAAD's joint velocities $$\dot q_1$$, $$\dot q_2$$, and $$\dot q_3$$, as well as desired reference velocities $$\dot q_{1des}$$, $$\dot q_{2des}$$, and $$\dot q_{3des}$$.
 
 After many iterations, the best gains were determined (tabluated below):
@@ -455,38 +460,4 @@ Since this project operated mostly in the transient region, using a centralized 
 Furthermore, soccer and other ball sports are played in 3D space. Future work can be built upon this 2D project by adding an additional degree of freedom in the direction out of BRAAD's current motion plane (z-direction). Without additional of multiple cameras, the system could use the size of the blob relative to the true size of a soccer ball to approximate its position. Alternatively, supplementary cameras could be used to track in multiple reference frames. Another method is using IR light and retro-reflective markers to localize an object in 3D. These may enable a wider variety of trapping sequences and maneuvers in 3D. For example, the arm could intercept the ball in midair and press it into the ground to trap it.
 
 Further applications to other ball sports and human robot interaction could be another field to explore with BRAAD in the future. The action of softly cushioning incoming the objects is ideal in the context of fragile biological organisms. The controller could also be applied in a reverse framework: consider the manipulator arm moving towards a target rather than the target moving towards the manipulator. This interception method could then be used to cushion the manipulator from the target, decelerating it similar to a landing action.
-
-
-<div class="row">
-    <div class="col-12">
-        <iframe src="https://drive.google.com/file/d/1Wt6Fxywwo53e-WAJfcoaqbFrwoyWlKTA/preview" width="640" height="480" allow="autoplay"></iframe>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        {% include figure.html path="assets/braad/img/VelCumErr_TuningKi.png" title="tuning Ki velocity controller cumulative error" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-
-{% include video.html path="assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
-
-
-
-
-<!-- # Conclusion
-The demonstrations showcase BRAAD's ability to visually sense oncoming balls and intercept it in a controlled fashion. It achieves this by predicting the ball's movement and matching its velocity at the point of contact before gently decelerating. This project provided invaluable experience to our group, reinforcing key controls concepts, granting us increased physical intuition with controller gains, and appreciation for the complexities of interfacing with physical and digital hardware. With this newfound knowledge, BRAAD will serve as an important stepping stone for our future work with robotic systems, utilizing our controls and hardware experiences to enhance their capabilities for the good of mankind. -->
-
-<!-- ## Challenges
-The first challenges faced by the team were related to the vision sub-system. The DEPSTECH 4k webcam allows for a number of image outputs and has the capability to run at greater than 30 fps. However, computational speed becomes the bottleneck in image processing. The computations that occur for each frame measures a time per loop that is slower than 30 hz, fluctuating between 50 and 70 ms. After initial tests with ball speeds of 1.5 m/s, we reduced the ball speed to less than 1 m/s, which allowed for enough computation to take place in the average 0.1 to 0.2 seconds of time between first ball detection and trapping sequence.
-
-Secondly, the computer vision system required a sizable amount of time to be dedicated to calibration and set up, as the team embarked on mapping pixel space to operational space prior to coverage in 263C lecture. The team found positional offsets and a scaling factor by hand, measuring pixel count across a still image and comparing to known distances in the workspace.  
-
-Of note is the fact that positional offsets are done in pixel space, based on the location of the base frame in the camera's view. This location is defined as the rotational axis of the first manipulator joint.
-
-Initially, the vision system began as a quasi-open loop system. In its first iteration, the system registered a set number of frames in which it had identified and recorded the ball. It then conducted a an estimation of ball trajectory and velocity and then handed off to the planning of joint trajectory and motor control. This method led to errors and trapping sequence failures, as the arm would be sent to an incorrect intercept location. In the final version of the system, the vision loop runs continuously to compute an updating and most accurate ball trajectory. There exists a trade-off as motor control and image processing occur sequentially in a loop rather than as parallel entities. Future work might involve separating moving motor control, vision, and predicted ball trajectory calculation across different processing units. 
-
-Further error and difficulty resulted from our non-uniform testing environment. Disturbances to the ball's trajectory from the uneven floor of the Engineering IV building disrupted the assumption of a linear 2D ball trajectory. This also influenced the groups motivation to close the outer loop vision control with continuous updates, which improved the reliability significantly since it could adapt to changes in trajectory. However, we also eventually transitioned to performing trials on a level conference table to further improve reliability.
-
-Communicating with the Dynamixels occasionally created issues as well. Some functions within the Dynamixel software development kit were not functional. For example, groupSync functions could not be called, so the slower and computationally heavier groupBulk functions had to be used. Joint velocities also could not be read from the Dynamixels, so joint positions were numerically differentiated with respect to time. Workaround methods were found through trial and error, such as writing gain values to each dynamixel individually instead of group writing them. -->
 
