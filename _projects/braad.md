@@ -461,6 +461,11 @@ Further applications to other ball sports and human robot interaction could be a
     </div>
 </div>
 
+<div class="row">
+    <div class="col-12">
+        {% include video.html extension="assets/braad/vid/braad1.mp4" }
+    </div>
+</div>
 
 <!-- # Conclusion
 The demonstrations showcase BRAAD's ability to visually sense oncoming balls and intercept it in a controlled fashion. It achieves this by predicting the ball's movement and matching its velocity at the point of contact before gently decelerating. This project provided invaluable experience to our group, reinforcing key controls concepts, granting us increased physical intuition with controller gains, and appreciation for the complexities of interfacing with physical and digital hardware. With this newfound knowledge, BRAAD will serve as an important stepping stone for our future work with robotic systems, utilizing our controls and hardware experiences to enhance their capabilities for the good of mankind. -->
