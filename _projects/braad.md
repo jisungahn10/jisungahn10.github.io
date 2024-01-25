@@ -34,14 +34,6 @@ The objective of the BRAAD robotic system is to actively manipulate the trajecto
     {% include video.html path="https://www.youtube.com/embed/rIjS70QzLBw" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-        {% include video.html path="https://www.youtube.com/embed/rIjS70QzLBw" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
-        </div>
-    </div>
-</div>
-
 Trapping a ball is different from simply catching a ball, as the act of trapping does not utilize grasping abilities normally associated with manipulator arms. This technique relies purely on the dynamic contact and motion of its end-effector. The ball’s real-time position and velocity can be obtained using vision to plan the trajectory of the end-effector (foot) at impact. 
 
 To this end, BRAAD consists of a combined robotic arm and visual sensor system. The robotic platform is designed to serve as the "leg" with an end-effector "foot" that interacts with balls in the environment, and is comprised of rigid links with dynamixel motors as the joints, as seen in Figure 1. The visual sensor is a camera mounted above the task space, pointing directly downwards to view the ball and robotic arm in the floor plane, as depicted in Figure 2.
@@ -105,7 +97,7 @@ Below are two videos of the ball trajectory prediction algorithm working live. T
 <div class="row">
     <div class="col"></div>
     <div class="col-12">
-        {% include video.html path="assets/braad/vid/braad_ball_prediction_conftable.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+        {% include video.html path="assets/braad/vid/braad_trajectory_tracking.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
     </div>
     <div class="col"></div>
 </div>
@@ -113,7 +105,7 @@ Below are two videos of the ball trajectory prediction algorithm working live. T
 <div class="row">
     <div class="col"></div>
     <div class="col-12">
-        {% include video.html path="assets/braad/vid/braad_trajectory_tracking.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+        {% include video.html path="assets/braad/vid/braad_ball_prediction_conftable.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
     </div>
     <div class="col"></div>
 </div>
