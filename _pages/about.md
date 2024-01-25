@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Software/Mechanical Engineer with Concentration in Robotics, Automation, and AI
+subtitle: Software/Mechanical Engineer \nConcentration in Robotics, Automation, and AI
 
 profile:
   align: right
@@ -13,6 +13,7 @@ profile:
     <p>420 Westwood Plaza</p>
     <p>Los Angeles, CA 90095</p>
 
+category: 
 news: false  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
