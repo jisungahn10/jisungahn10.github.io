@@ -13,6 +13,12 @@ toc:
 # Overview
 Robots are often used for tasks that require identifying and safely manipulating objects in an environment. Many robotic manipulators have demonstrated catching objects, which involves tracking the trajectory of a moving target and intercepting it. By grasping the object mid-air with an end-effector, these manipulators successfully demonstrate the impressive speed of their control system. However, the grasping action occurs in an instant, causing sudden, harsh forces on the object and gripper as the object decelerates instantaneously. Thus, without any way to compensate for these forces (such as mechanical compliance in the manipulator joints), this method of interception could damage the object being grasped, especially if it is fragile (such as an egg). In other cases, the manipulator itself could be damaged from the sudden external load, for example, if it was intercepting a heavy package.
 
+<div class="row">
+    <div class="col-12">
+        {% include video.html path="https://www.youtube.com/embed/rIjS70QzLBw" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+    </div>
+</div>
+
 BRAAD (Ball Receiving Autonomously Actuated Device) is a robotic manipulator designed to track and gently decelerate a moving target using visual feedback. This will be demonstrated through the task of soccer ball trapping, a maneuver that involves “capturing” a moving soccer ball as it approaches by gently applying a controlled force to decelerate the ball until its velocity reaches zero. In human soccer games, players typically perform trapping by contacting the ball with an outstretched foot and continuously tracking the ball with their foot, keeping it in contact as the ball moves to apply the deceleration force.
 
 BRAAD is designed to actively manipulate the trajectory of a moving soccer ball based on its real-time position and velocity. As the ball approaches, the system will use visual feedback to track the ball’s position and velocity as it approaches in order to determine where the end-effector should be placed to successfully intercept the ball. Before the ball makes contact, the robot will move its end-effector along the ball’s predicted path in order to prevent it from bouncing off. Once contact is established, BRAAD will gently slow down the ball similar to the human case. 
@@ -258,7 +264,7 @@ The desired joint velocities are then sent to the Dynamixels internal velocity c
 
 <div class="row">
     <div class="col-12">
-        {% include video.html path="assets/braad/vid/braad1.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
+        {% include video.html path="assets/braad/vid/braad1.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
     </div>
 </div>
 
