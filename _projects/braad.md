@@ -187,7 +187,7 @@ Performing this calculation yields:
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-8">
+    <div class="col-10">
         {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded" %}
     </div>
     <div class="col"></div>
