@@ -137,7 +137,17 @@ Feedforward compensation can be utilized since desired trajectories need to be g
 To trap an incoming ball, the system must perform many preliminary and real-time calculations in order to analyze the ball and generate trajectories to feed into the position or velocity controllers. Since we wanted to reduce computing time whenever possible, certain steps were pre-calculated based on BRAAD's physical parameters to assist the controller in generating desired trajectories. 
 
 ## Point of Interception
-If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to settle on a single location. The forward kinematics of the 3R system is derived to compute the manipulability. For link lengths $$L_{1}$$, $$L_{2}$$, and $$L_{3}$$, with joint angles $$\theta_{1}$$, $$\theta_{2}$$, and $$\theta_{3}$$, the forward kinematics for the system are:
+If the ball's predicted trajectory were to cross the robot's workspace, there are numerous locations where the end-effector could intercept the ball. Below is a 2D simulation of where BRAAD could theoretically track the ball's trajectory.
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12">
+        {% include video.html path="assets/braad/vid/braad_numerous_interception_locations.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+    </div>
+    <div class="col"></div>
+</div>
+
+In addition to intercepting the ball, because BRAAD needs to interact with the ball, manipulability, a measure of how much velocity or force the end-effector could produce, was used as a metric to decide the point of interception. The forward kinematics of the planar 3R system was derived to compute the manipulability. For link lengths $$L_{1}$$, $$L_{2}$$, and $$L_{3}$$, with joint angles $$\theta_{1}$$, $$\theta_{2}$$, and $$\theta_{3}$$, the forward kinematics for the system are:
 
 <div class="row">
     <div class="col"></div>
@@ -193,8 +203,7 @@ Performing this calculation yields:
     <div class="col"></div>
 </div>
 
-From this, we then used the manipulability metric $$w$$ to assess the manipulability for a given point in the workspace. 
-The Jacobian was used to assess the manipulability for a given point in the workspace.
+The Jacobian was then used to compute the manipulability $$w$$ for a given point in the workspace.
 
 <div class="row">
     <div class="col"></div>
@@ -204,7 +213,7 @@ The Jacobian was used to assess the manipulability for a given point in the work
     <div class="col"></div>
 </div>
 
-With this metric, the manipulabiliy can be found at several points distributed throughout the workspace to visualize the robot's capabilities. Monte Carlo method is used to analyze the manipulability of the robot across the entire workspace (Figure 4), where the red points indicate regions of higher manipulability. A circular region of highest manipulability can be observed from the visualization of the manipulability.
+The manipulability of the robot across the entire workspace was analyzed using the Monte Carlo method (Figure 4), where the red points indicate regions of higher manipulability. A circular region of highest manipulability can be observed from the analysis.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -215,9 +224,9 @@ With this metric, the manipulabiliy can be found at several points distributed t
     Figure 4: Monte Carlo Simulation of Manipulability
 </div>
 
-Trapping the ball inside the red region is the best case scenario since the end-effector will need to travel linearly along the ball's path while maintaining a constant end-effector orientation. A point with higher manipulability will have a reduced likelihood that the robot will be unable to perform the required maneuvers to cushion the ball.
+Trapping the ball inside the red region is the best case scenario since the end-effector will need to travel linearly along the ball's path while maintaining a constant end-effector orientation. The robot would be capable of more effectively performing the required maneuvers to cushion the ball if the point of interception were inside a region of high manipulability.
 
-While this metric is useful for visualization, it is computationally expensive to perform these calculations in real-time, which can slow down the controller. This is undesirable when the system only has fractions of a second to select the best interception point and generate the trajectory to reach it as the ball approaches. Thus, instead of calculating the manipulability metric and evaluating all potential interception points, this process was simplified by designating a "circle of best manipulability", lying in the center of the region of highest manipulability. This circle is taken to have a radius of 0.265 m from the base of the manipulator, and can be seen as red dotted circle in Figure 5.
+While the analysis is useful for visualization, it is computationally expensive to compute manpulability of predicted future positions of the ball in real-time, which can significantly slow down the controller. This is undesirable when the system only has fractions of a second to select the best interception point and generate the trajectory to reach it as the ball approaches. Thus, instead of calculating the manipulability metric and evaluating all potential interception points, this process was simplified by designating a "circle of best manipulability", lying in the center of the region of highest manipulability. This circle was determined to have a radius of 0.265 m from the base of the manipulator, and can be seen as red dotted circle in Figure 5.
 
 <div class="col-sm mt-3 mt-md-0">
     {% include figure.html path="assets/braad/img/matlabinterception1.png" title="interception 1" class="img-fluid rounded z-depth-1" %}
@@ -287,7 +296,7 @@ The desired joint velocities are then sent to the Dynamixels internal velocity c
 
 <div class="row">
     <div class="col-12">
-        {% include video.html path="assets/braad/vid/braad1.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+        {% include video.html path="assets/braad/vid/braad_gain_tuning.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
     </div>
 </div>
 
