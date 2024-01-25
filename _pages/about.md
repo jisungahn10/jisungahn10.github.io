@@ -2,7 +2,9 @@
 layout: about
 title: about
 permalink: /
-subtitle: Software/Mechanical Engineer \nConcentration in Robotics, Automation, and AI
+subtitle: >
+  Software/Mechanical Engineer 
+  Concentration in Robotics, Automation, and AI
 
 profile:
   align: right
