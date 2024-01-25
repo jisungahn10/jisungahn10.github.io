@@ -34,9 +34,11 @@ The objective of the BRAAD robotic system is to actively manipulate the trajecto
     {% include video.html path="https://www.youtube.com/embed/rIjS70QzLBw" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
 </div>
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
         {% include video.html path="https://www.youtube.com/embed/rIjS70QzLBw" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+        </div>
     </div>
 </div>
 
