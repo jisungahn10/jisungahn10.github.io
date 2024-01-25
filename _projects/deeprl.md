@@ -4,8 +4,10 @@ title: Reinforcement Learning
 description: Reinforcement learning approach to strategic game behavior
 img: assets/rl/img/robocup_simulation_environment.png
 importance: 3
-category: work
+category: reinforcement learning
 related_publications: haarnoja2023learning, Authors14, Authors15, zhu2021deep, ibarz2021train, pathak2017curiosity, kaelbling1996reinforcement, florensa2018automatic, riedmiller2018learning, ahn2023development, carreras2003proposal
+toc: 
+    sidebar: left
 ---
 
 # Context

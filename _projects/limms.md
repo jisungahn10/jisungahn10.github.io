@@ -4,8 +4,10 @@ title: LIMMS
 description: Latching Intelligent Modular Mobility System
 img: assets/limms/img/limms_background.png
 importance: 2
-category: work
+category: robotics
 related_publications: zhu2022feasibility, fernandez2022self, fernandez2024self
+toc: 
+    sidebar: left
 ---
 
 # Overview

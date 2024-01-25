@@ -4,7 +4,7 @@ title: BRAAD
 description: Ball Receiving Autonomously Actuated Device
 img: assets/braad/img/braad_nolabels.jpg
 importance: 5
-category: work
+category: robotics
 related_publications: 
 toc: 
     sidebar: left

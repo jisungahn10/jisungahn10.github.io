@@ -4,8 +4,10 @@ title: ARTEMIS
 description: Advanced Robotic Technology for Enhanced Mobility and Improved Stability
 img: assets/robocup23/img/artemis.jpg
 importance: 1
-category: work
+category: robotics
 related_publications: Authors15, ahn2023development,brooks1986robust, brooks1991new,  nakhaeinia2011review, tzafestas2018mobile, vukovic2009new, batinovic2020decentralized, carreras2003proposal
+toc: 
+    sidebar: left
 ---
 
 # Context
