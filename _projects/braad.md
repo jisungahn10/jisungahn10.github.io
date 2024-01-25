@@ -30,6 +30,10 @@ This method of predictive trapping can potentially be extended for use in a vari
 # Objective
 The objective of the BRAAD robotic system is to actively manipulate the trajectory of a moving target based on that target's real-time position and velocity. The task to represent this objective is modeled as a manipulator robot that traps a rolling ball. The act of trapping occurs most frequently in the sport of soccer, where an athlete cushions an incoming pass and reduces the ball's momentum such that it comes to rest underneath or out in front of the athlete. As the receiving foot moves with the same velocity as the ball, the collision time is extended. The trapping motion of a professional athlete also often directs the ball downward, where momentum can be dissipated into the ground or through deformation of the ball. 
 
+<div align="center">
+    {% include video.html path="https://www.youtube.com/embed/rIjS70QzLBw" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+</div>
+
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include video.html path="https://www.youtube.com/embed/rIjS70QzLBw" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
@@ -156,7 +160,7 @@ If the ball's predicted trajectory were to cross the robot's workspace, there ar
 <div class="row">
     <div class="col"></div>
     <div class="col-6">
-        {% include figure.html path="assets/braad/img/braad_forward_kinematics.png" title="braad forward kinematics" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/braad/img/braad_forward_kinematics.png" title="braad forward kinematics" class="img-fluid rounded" %}
     </div>
     <div class="col"></div>
 </div>
