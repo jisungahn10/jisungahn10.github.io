@@ -186,7 +186,7 @@ These equations were used to find the Jacobian $$J$$ by calculating:
 <div class="row">
     <div class="col"></div>
     <div class="col-6">
-        {% include figure.html path="assets/braad/img/jacobian_general.png" title="jacobian general" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/braad/img/jacobian_general.png" title="jacobian general" class="img-fluid rounded" %}
     </div>
     <div class="col"></div>
 </div>
@@ -206,7 +206,7 @@ Performing this calculation yields:
 <div class="row">
     <div class="col"></div>
     <div class="col-8">
-        {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/braad/img/braad_jacobian.png" title="braad jacobian" class="img-fluid rounded" %}
     </div>
     <div class="col"></div>
 </div>
@@ -217,7 +217,7 @@ The Jacobian was used to assess the manipulability for a given point in the work
 <div class="row">
     <div class="col"></div>
     <div class="col-4">
-        {% include figure.html path="assets/braad/img/braad_manipulability.png" title="braad manipulability" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/braad/img/braad_manipulability.png" title="braad manipulability" class="img-fluid rounded" %}
     </div>
     <div class="col"></div>
 </div>
@@ -325,22 +325,18 @@ After many iterations, the best gains were determined (tabluated below):
 The joint positions and velocities with gained tunes are shown in Figures 10 and 11. Velocities were obtained using finite differentiation of the positions. The data shown for all joint velocity graphs has been subjected to smoothing using the last 10 values in the data due to the sensitivity of numerical differentiations to noise in the position data.
 
 <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-12">
         {% include figure.html path="assets/braad/img/positionall.jpg" title="all joint positions" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-2"></div>
 </div>
 <div class="caption">
     Figure 10: Joint Positions (Stage 1)
 </div>
 
 <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-12">
         {% include figure.html path="assets/braad/img/velocityall.jpg" title="all joint velocities" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-2"></div>
 </div>
 <div class="caption">
     Figure 11: Joint Velocities (Stage 2)
