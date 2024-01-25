@@ -81,9 +81,38 @@ BRAAD's robotic arm is a 3R planar robot comprised of two links and one end-effe
 All components are wired to interface with a laptop computer. The computer uses MATLAB to coordinate between the vision system, trajectory generation subroutines, and motor controllers.
 
 # Vision System Design
-The purpose of this sub-system is to identify the incoming ball, determine its position in operational space, and then continually estimate an incoming ball trajectory that feeds into our controller. A DEPSTECH 4K webcam is mounted 1.5 m above the floor plane on an additional 80/20 frame, giving the camera a view the entire operational space. A bubble leveler was used to ensure the image data would have minimal perspective shifts, allowing one pixel to translate directly to one X-Y coordinate on the floor plane. Distortion is expected to occur on the outer edge of the cameras image, but is assumed to be negligible given the minimal distance between the camera and the workspace. Despite the DEPSTECH's 4K capabilities, an output resolution of 720x1280 pixels was used because high resolution is not a priority and the chosen resolution still clearly displays both the manipulator arm and the blue ball within its field of view. MATLAB's Computer Vision and Image Processing toolboxes was used to conduct a frame by frame analysis to determine the ball's position. The computer vision system does region-based image segmentation based on area and interprets the centroid of the region as the center of the ball with respect to time. Using the 5 most recently recorded position coordinates of the ball and the corresponding time values, a prediction of the ball's trajectory was made based on a first order polynomial. The predicted trajectory and the current position of the end-effector was used to determine the point of interception of the ball (Figure 3).
+The purpose of this sub-system is to identify the incoming ball, determine its position in operational space, and then continually estimate an incoming ball trajectory that feeds into our controller. A DEPSTECH 4K webcam is mounted 1.5 m above the floor plane on an additional 80/20 frame, giving the camera a view the entire operational space. A bubble leveler was used to ensure the image data would have minimal perspective shifts, allowing one pixel to translate directly to one X-Y coordinate on the floor plane. Distortion is expected to occur on the outer edge of the cameras image, but is assumed to be negligible given the minimal distance between the camera and the workspace. Despite the DEPSTECH's 4K capabilities, an output resolution of 720x1280 pixels was used because high resolution is not a priority and the chosen resolution still clearly displays both the manipulator arm and the blue ball within its field of view. MATLAB's Computer Vision and Image Processing toolboxes was used to conduct a frame by frame analysis to determine the ball's position. The computer vision system does region-based image segmentation based on area and interprets the centroid of the region as the center of the ball with respect to time. Using the 5 most recently recorded position coordinates of the ball and the corresponding time values, a prediction of the ball's trajectory was made based on a first order polynomial. The predicted trajectory (Figure 3) and the current position of the end-effector was used to determine the point of interception of the ball.
 
 <div class="row">
+    <div class="col"></div>
+    <div class="col-8">
+        {% include figure.html path="assets/braad/img/visionpredict.jpg" title="predict ball trajectory" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col"></div>
+</div>
+<div class="caption">
+    Figure 3: Prediction of the Ball's Trajectory
+</div>
+
+Below are two videos of the ball trajectory prediction algorithm working live. The green dots are a history of the ball's positions and the red dots are predicted future positions of the ball.
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12">
+        {% include video.html path="assets/braad/vid/braad_ball_prediction_conftable.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+    </div>
+    <div class="col"></div>
+</div>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12">
+        {% include video.html path="assets/braad/vid/braad_trajectory_tracking.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false %}
+    </div>
+    <div class="col"></div>
+</div>
+
+<!-- <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/braad/gif/predicted_ball_gif1.gif" title="predicted ball gif1" class="img-fluid rounded z-depth-1" %}
     </div>
@@ -93,7 +122,7 @@ The purpose of this sub-system is to identify the incoming ball, determine its p
 </div>
 <div class="caption">
     Figure 3: Prediction of the Ball's Trajectory
-</div>
+</div> -->
 
 <!-- The decision to use MATLAB rather than other computer vision applications like OpenCV was grounded in optimizing the development process. Using MATLAB allowed for the simplest and most intuitive integration between project subsystems: vision and motor control. However, this decision brings with it the the drawback of limited processing speed and requires running the computer vision system sequentially with trajectory generation and motor control. -->
 <!-- With regards to camera settings, despite the DEPSTECH's 4k capabilities, the team opted to utilize an output resolution of 720x1280 px. High resolution was not a design priority, and the chosen resolution still clearly displays both the maniupulator arm and blue ball within its field of view. -->
