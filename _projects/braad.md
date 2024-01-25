@@ -116,18 +116,6 @@ Below are two videos of the ball trajectory prediction algorithm working live. T
     <div class="col"></div>
 </div>
 
-<!-- <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/braad/gif/predicted_ball_gif1.gif" title="predicted ball gif1" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/braad/gif/predicted_ball_gif2.gif" title="predicted ball gif2" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Figure 3: Prediction of the Ball's Trajectory
-</div> -->
-
 <!-- The decision to use MATLAB rather than other computer vision applications like OpenCV was grounded in optimizing the development process. Using MATLAB allowed for the simplest and most intuitive integration between project subsystems: vision and motor control. However, this decision brings with it the the drawback of limited processing speed and requires running the computer vision system sequentially with trajectory generation and motor control. -->
 <!-- With regards to camera settings, despite the DEPSTECH's 4k capabilities, the team opted to utilize an output resolution of 720x1280 px. High resolution was not a design priority, and the chosen resolution still clearly displays both the maniupulator arm and blue ball within its field of view. -->
 
